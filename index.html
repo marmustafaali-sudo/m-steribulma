@@ -53,6 +53,21 @@
        text-transform:uppercase;cursor:pointer}
   button:hover{border-color:var(--steel);color:var(--steel)}
   button.primary{border-color:var(--steel);color:var(--steel)}
+  #rval{float:right;color:var(--steel);font-family:var(--mono);letter-spacing:0;font-size:12px;
+        text-transform:none}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:24px;
+        background:transparent;cursor:pointer;margin:0}
+  input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;
+        background:linear-gradient(to right,var(--steel) var(--fill,50%),var(--line) var(--fill,50%))}
+  input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--line)}
+  input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--steel)}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
+        border-radius:50%;background:#0B0F14;border:3px solid var(--steel);margin-top:-6px;
+        box-shadow:0 0 0 4px rgba(242,160,7,.14)}
+  input[type=range]::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#0B0F14;
+        border:3px solid var(--steel);box-shadow:0 0 0 4px rgba(242,160,7,.14)}
+  input[type=range]:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
+
   .row{display:flex;gap:8px}
   .spacer{margin-left:auto}
   .count{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
@@ -165,12 +180,12 @@
         </div>
         <div class="row" style="margin-top:8px">
           <button id="hq" style="flex:1">Karabük'e dön</button>
-          <button id="clr">Temizle</button>
+          <button id="clr">Sınırsız</button>
         </div>
       </div>
       <div class="block">
-        <label class="k" for="r">Çaplar (km)</label>
-        <input type="text" id="r" value="500, 1500, 3000">
+        <label class="k" for="r">Kapsama çapı <span id="rval">3000 km</span></label>
+        <input type="range" id="r" min="100" max="6000" step="100" value="3000">
       </div>
       <div class="block">
         <label class="k">Sektör</label>
@@ -186,11 +201,11 @@
           <option value="hepsi">Tüm sanayi tesisleri</option>
         </select>
         <div class="row" style="margin-top:8px">
-          <button id="bul" class="primary" style="flex:1">Bu alanda ara</button>
+          <button id="bul" class="primary" style="flex:1">Bu çapta ara</button>
           <button id="bultemiz">Sil</button>
         </div>
         <p id="buldurum" style="margin:8px 0 0;color:var(--muted);font-size:11.5px;
-           font-family:var(--mono);line-height:1.5">Haritayı aramak istediğin bölgeye yakınlaştır, sonra ara.</p>
+           font-family:var(--mono);line-height:1.5">Arama, sürgüyle seçtiğin çap içinde yapılır (en fazla 400 km).</p>
       </div>
       <div class="block" id="readout">Merkez: Karabük (Kardökmak)</div>
       <div id="list"></div>
@@ -269,7 +284,7 @@
     <div class="bar">
       <input type="text" id="fq" placeholder="Firma veya şehir ara">
       <select id="fu"><option value="">Tüm ülkeler</option></select>
-      <select id="fk"><option value="">Hepsi</option><option value="var">Konumu bulunanlar</option><option value="yok">Konumu bulunmayanlar</option></select>
+      <select id="fk"><option value="">Hepsi</option><option value="kapsam">Sadece seçilen çap içinde</option></select>
       <span class="spacer"></span>
       <span class="count" id="fcount"></span>
       <button id="fkoordinp">Koordinat yükle</button>
@@ -433,7 +448,11 @@ function bearing(a,b){
 }
 const YON=['K','KD','D','GD','G','GB','B','KB'];
 const yon = d => YON[Math.round(d/45)%8];
-const caplar = () => ($('#r').value.match(/\d+(\.\d+)?/g)||[]).map(Number).filter(n=>n>0).sort((a,b)=>a-b).slice(0,4);
+const caplar = () => {
+  const v = +$('#r').value;
+  if(v >= 6000) return [];                       // en sağ uç = sınırsız
+  return [Math.round(v/3/50)*50, Math.round(v*2/3/50)*50, v].filter((x,i,a)=>x>0 && a.indexOf(x)===i);
+};
 const maxCap = () => { const r=caplar(); return r.length ? r[r.length-1] : Infinity; };
 const bant = u => u.max<=5 ? 'a' : (u.min>=40 ? 'c' : 'b');
 const sekEt = k => `<span class="sek ${SEK[k].c}">${SEK[k].ad}</span>`;
@@ -538,9 +557,15 @@ function goster(id){
 }
 
 map.on('click', e => { center={lat:e.latlng.lat,lng:e.latlng.lng}; ciz(); ciziM(); });
-$('#r').addEventListener('input',()=>{ciz();ciziM();});
+function rGuncelle(){
+  const el=$('#r'), v=+el.value;
+  el.style.setProperty('--fill', ((v-el.min)/(el.max-el.min)*100)+'%');
+  $('#rval').textContent = v>=6000 ? 'sınırsız' : v.toLocaleString('tr-TR')+' km';
+}
+$('#r').addEventListener('input',()=>{rGuncelle();ciz();ciziM();if(window.ciziF)ciziF();});
 $('#hq').onclick = () => { center={...EV}; map.flyTo(center,5,{duration:.7}); ciz(); ciziM(); };
-$('#clr').onclick = () => { $('#r').value=''; ciz(); ciziM(); };
+$('#clr').onclick = () => { $('#r').value=6000; rGuncelle(); ciz(); ciziM(); };
+rGuncelle();
 async function ara(){
   const q=$('#q').value.trim(); if(!q) return;
   $('#go').textContent='...';
@@ -683,40 +708,56 @@ const SORGU = {
   hepsi:  ['["man_made"="works"]','["industrial"="factory"]']
 };
 
-function overpassSorgu(tip, b){
-  const bbox = `${b.getSouth().toFixed(4)},${b.getWest().toFixed(4)},${b.getNorth().toFixed(4)},${b.getEast().toFixed(4)}`;
+function overpassSorgu(tip, yaricap){
+  const cevre = `(around:${Math.round(yaricap*1000)},${center.lat.toFixed(5)},${center.lng.toFixed(5)})`;
   const taban = tip==='hepsi' ? '' : '["man_made"="works"]';
   const parcalar = SORGU[tip].map(f =>
     f.includes('landuse')||f.includes('mineshaft')||f.includes('man_made')||f.includes('industrial')||f.includes('craft')
-      ? `nwr${f}(${bbox});`
-      : `nwr${taban}${f}(${bbox}); nwr["industrial"]${f}(${bbox});`
+      ? `nwr${f}${cevre};`
+      : `nwr${taban}${f}${cevre}; nwr["industrial"]${f}${cevre};`
   ).join('\n  ');
-  return `[out:json][timeout:45];\n(\n  ${parcalar}\n);\nout center tags 200;`;
+  return `[out:json][timeout:60];\n(\n  ${parcalar}\n);\nout center tags 300;`;
 }
+
+const ARAMA_SINIR = 400;   // km — bunun üstünde servis zaman aşımına uğruyor
+
+const OVERPASS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
+  'https://maps.mail.ru/osm/tools/overpass/api/interpreter'
+];
 
 async function tesisAra(){
-  const b = map.getBounds();
-  const alanKm = haversine({lat:b.getSouth(),lng:b.getWest()},{lat:b.getNorth(),lng:b.getEast()});
-  if(alanKm > 2200){
-    $('#buldurum').textContent = 'Görünen alan çok geniş — servis zaman aşımına uğrar. Bir ülke veya bölge ölçeğine yakınlaştır.';
-    return;
-  }
+  const secili = maxCap();
+  const yaricap = Math.min(isFinite(secili) ? secili : ARAMA_SINIR, ARAMA_SINIR);
   const tip = $('#tip').value;
+  const sorgu = overpassSorgu(tip, yaricap);
   $('#bul').textContent='Aranıyor...'; $('#bul').disabled=true;
-  $('#buldurum').textContent='OpenStreetMap taranıyor, bu 10–30 saniye sürebilir.';
-  try{
-    const r = await fetch('https://overpass-api.de/api/interpreter',
-      {method:'POST', body:'data='+encodeURIComponent(overpassSorgu(tip,b))});
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    const j = await r.json();
-    bulSonuc(j.elements||[], tip);
-  }catch(e){
-    $('#buldurum').textContent = 'Arama başarısız: '+e.message+'. Servis yoğun olabilir, biraz sonra tekrar dene.';
+
+  let sonHata = '';
+  for(let i=0; i<OVERPASS.length; i++){
+    const sunucu = new URL(OVERPASS[i]).hostname;
+    $('#buldurum').textContent =
+      `${yaricap} km çevresi taranıyor — sunucu ${i+1}/${OVERPASS.length} (${sunucu}). Bu 10–40 saniye sürebilir.`;
+    try{
+      const r = await fetch(OVERPASS[i] + '?data=' + encodeURIComponent(sorgu), {method:'GET'});
+      if(!r.ok) throw new Error('sunucu ' + r.status + ' döndü');
+      const j = await r.json();
+      bulSonuc(j.elements||[], tip, yaricap);
+      $('#bul').textContent='Bu çapta ara'; $('#bul').disabled=false;
+      return;
+    }catch(e){ sonHata = e.message; }
   }
-  $('#bul').textContent='Bu alanda ara'; $('#bul').disabled=false;
+
+  $('#buldurum').innerHTML =
+    `Hiçbir sunucuya ulaşılamadı (${esc(sonHata)}).<br>`+
+    `Bu sayfa bir önizleme penceresinde açıksa dış bağlantılar engellenmiş olabilir — `+
+    `siteyi kendi adresinde açıp tekrar dene. Sorun sürerse servis geçici olarak kapalıdır.`;
+  $('#bul').textContent='Bu çapta ara'; $('#bul').disabled=false;
 }
 
-function bulSonuc(els, tip){
+function bulSonuc(els, tip, yaricap){
   bulLayer.clearLayers(); BULUNAN={};
   let n=0;
   els.forEach(e=>{
@@ -738,8 +779,8 @@ function bulSonuc(els, tip){
       .addTo(bulLayer);
   });
   $('#buldurum').textContent = n
-    ? `${n} tesis bulundu. Beyaz kesikli işaretler — balona tıklayıp listene ekleyebilirsin.`
-    : 'Bu alanda kayıtlı tesis bulunamadı. Başka bir tesis tipi seç veya alanı genişlet.';
+    ? `${yaricap} km çapında ${n} tesis bulundu. Beyaz kesikli işaretler — balona tıklayıp listene ekleyebilirsin.`
+    : `${yaricap} km çapında kayıtlı tesis bulunamadı. Çapı büyüt veya başka bir tesis tipi seç.`;
 }
 
 window.bulEkle = id => {
@@ -775,15 +816,16 @@ let fSort={k:'ad',d:1};
 });
 
 function fuarlar(){
-  const q=$('#fq').value.toLowerCase().trim(), u=$('#fu').value, k=$('#fk').value;
+  const q=$('#fq').value.toLowerCase().trim(), u=$('#fu').value, k=$('#fk').value, mx=maxCap();
   return FUAR.filter(f=>(!q||(f.ad+' '+f.sehir).toLowerCase().includes(q)) &&
-      (!u||f.ulke===u) && (!k || (k==='var'? f.lat!=null : f.lat==null)))
+      (!u||f.ulke===u) && (k!=='kapsam' || (f.lat!=null && haversine(center,f)<=mx)))
     .sort((x,y)=>{const s=fSort.k;
       if(s==='d'){const a=x.lat!=null?haversine(center,x):1e9, b=y.lat!=null?haversine(center,y):1e9;
         return (a-b)*fSort.d;}
       return String(x[s]).localeCompare(String(y[s]),'tr')*fSort.d;});
 }
 
+window.ciziF = ciziF;
 function ciziF(){
   const rows=fuarlar(), bulunan=FUAR.filter(f=>f.lat!=null).length;
   $('#fcount').textContent=`${rows.length} / ${FUAR.length} firma · ${bulunan} konumlandı`;
