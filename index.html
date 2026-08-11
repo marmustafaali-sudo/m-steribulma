@@ -175,6 +175,22 @@
         <label class="k">Sektör</label>
         <div class="chips" id="mapchips"></div>
       </div>
+      <div class="block">
+        <label class="k" for="tip">Otomatik tesis arama</label>
+        <select id="tip" style="width:100%">
+          <option value="cimento">Çimento fabrikaları</option>
+          <option value="celik">Demir-çelik ve haddehane</option>
+          <option value="maden">Maden ve ocaklar</option>
+          <option value="dokum">Dökümhane ve metal işleme</option>
+          <option value="hepsi">Tüm sanayi tesisleri</option>
+        </select>
+        <div class="row" style="margin-top:8px">
+          <button id="bul" class="primary" style="flex:1">Bu alanda ara</button>
+          <button id="bultemiz">Sil</button>
+        </div>
+        <p id="buldurum" style="margin:8px 0 0;color:var(--muted);font-size:11.5px;
+           font-family:var(--mono);line-height:1.5">Haritayı aramak istediğin bölgeye yakınlaştır, sonra ara.</p>
+      </div>
       <div class="block" id="readout">Merkez: Karabük (Kardökmak)</div>
       <div id="list"></div>
     </aside>
@@ -219,6 +235,13 @@
       <select id="mbol"><option value="">Tüm bölgeler</option></select>
       <select id="mtip"><option value="">Tesis + OEM</option><option>Tesis</option><option>OEM</option></select>
       <select id="mdur"><option value="">Tüm durumlar</option></select>
+      <select id="mrol" title="LinkedIn aramasında hangi ünvanı arayacağı">
+        <option value="">Ünvan: satın alma</option>
+        <option value="procurement purchasing">Satın alma</option>
+        <option value="maintenance manager">Bakım müdürü</option>
+        <option value="plant manager operations">İşletme / fabrika müdürü</option>
+        <option value="sourcing supplier quality">Tedarik / tedarikçi kalite</option>
+      </select>
       <button id="mkap">Sadece kapsam içi</button>
       <span class="spacer"></span>
       <span class="count" id="mcount"></span>
@@ -230,9 +253,10 @@
         <thead><tr>
           <th data-s="ad">Firma</th><th data-s="bolge">Konum</th>
           <th data-s="sektor">Sektör</th><th data-s="d">Mesafe</th>
-          <th data-s="dur" style="width:145px">Durum</th>
-          <th style="width:26%">Not / sonraki adım</th>
-          <th style="width:56px"></th>
+          <th data-s="dur" style="width:135px">Durum</th>
+          <th style="width:22%">İletişim</th>
+          <th style="width:20%">Not / sonraki adım</th>
+          <th style="width:60px"></th>
         </tr></thead>
         <tbody id="mtb"></tbody>
       </table>
@@ -353,7 +377,15 @@ let MUS = [
   ['Sandvik','Stockholm, İsveç','Avrupa OEM',['maden'],'OEM',59.330,18.070,''],
   ['Weir Minerals','Glasgow, İngiltere','Avrupa OEM',['maden'],'OEM',55.860,-4.250,'']
 ].map((r,i)=>({id:'M'+i, ad:r[0], konum:r[1], bolge:r[2], sektor:r[3], tip:r[4],
-                lat:r[5], lng:r[6], not:r[7], dur:0}));
+                lat:r[5], lng:r[6], not:r[7], dur:0, ilt:''}));
+
+/* Doğrulanmış kamuya açık kurumsal iletişim bilgileri (firmaların resmi künye/iletişim sayfaları) */
+const ILETISIM = {
+  'SMS group':'+49 2161 350-0 · communications@sms-group.com · sms-group.com — Am SMS Campus 1, 41069 Mönchengladbach',
+  'Danieli':'+39 0432 1958111 · danieli.com — Via Nazionale 41, 33042 Buttrio (UD)',
+  'FLSmidth':'+45 3618 1000 · info@flsmidth.com · fls.com — Vigerslev Allé 77, 2500 Valby, Kopenhag'
+};
+MUS.forEach(m => { if(ILETISIM[m.ad]) m.ilt = ILETISIM[m.ad]; });
 
 /* ---------- ortak ---------- */
 const $ = s => document.querySelector(s);
@@ -379,6 +411,7 @@ const caplar = () => ($('#r').value.match(/\d+(\.\d+)?/g)||[]).map(Number).filte
 const maxCap = () => { const r=caplar(); return r.length ? r[r.length-1] : Infinity; };
 const bant = u => u.max<=5 ? 'a' : (u.min>=40 ? 'c' : 'b');
 const sekEt = k => `<span class="sek ${SEK[k].c}">${SEK[k].ad}</span>`;
+const liRol = () => $('#mrol').value || 'procurement purchasing';
 
 /* müşterinin sektörüne göre önerilen kalemler */
 const oneri = m => URUN.filter(u=>m.sektor.includes(u.sektor) && u.max>=20)
@@ -546,14 +579,21 @@ function ciziM(){
       <td class="mono">${m.d2.toFixed(0)} km</td>
       <td><select class="dur d${m.dur}" aria-label="${esc(m.ad)} durumu">${
         DUR.map((d,i)=>`<option value="${i}" ${i===m.dur?'selected':''}>${d}</option>`).join('')}</select></td>
-      <td><textarea class="note" rows="1" placeholder="Not / sonraki adım">${esc(m.not)}</textarea></td>
-      <td><button class="pin">Harita</button></td>
-    </tr>`).join('') : '<tr><td colspan="7" class="empty">Bu filtreye uyan firma yok.</td></tr>';
+      <td><textarea class="note ilt" rows="1" placeholder="Telefon · e-posta · web">${esc(m.ilt)}</textarea></td>
+      <td><textarea class="note nt" rows="1" placeholder="Not / sonraki adım">${esc(m.not)}</textarea></td>
+      <td><button class="pin p1">Harita</button><button class="pin p2" style="margin-top:4px">Ara</button><button class="pin p3" style="margin-top:4px">in</button></td>
+    </tr>`).join('') : '<tr><td colspan="8" class="empty">Bu filtreye uyan firma yok.</td></tr>';
   $('#mtb').querySelectorAll('tr.r').forEach(tr=>{
     const m=MUS.find(x=>x.id===tr.dataset.id);
     tr.querySelector('.dur').onchange=e=>{m.dur=+e.target.value;ciziM();ciz();};
-    tr.querySelector('.note').onchange=e=>{m.not=e.target.value;};
-    tr.querySelector('.pin').onclick=()=>goster(m.id);
+    tr.querySelector('.nt').onchange=e=>{m.not=e.target.value;};
+    tr.querySelector('.ilt').onchange=e=>{m.ilt=e.target.value;};
+    tr.querySelector('.p1').onclick=()=>goster(m.id);
+    tr.querySelector('.p2').onclick=()=>window.open(
+      'https://www.google.com/search?q='+encodeURIComponent(m.ad+' '+m.konum+' contact phone email'),'_blank');
+    tr.querySelector('.p3').onclick=()=>window.open(
+      'https://www.linkedin.com/search/results/people/?keywords='+
+      encodeURIComponent(m.ad+' '+(liRol()||'')),'_blank');
   });
 }
 
@@ -600,9 +640,100 @@ function indir(ad,csv){const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download=ad;a.click();}
 $('#uexp').onclick=()=>indir('urun-yelpazesi.csv','parca;sektor;min_ton;max_ton;secili;not\n'+
   urunler().map(u=>[u.ad,SEK[u.sektor].ad,u.min,u.max,u.sec?'EVET':'',u.not].map(alan).join(';')).join('\n'));
-$('#mexp').onclick=()=>indir('hedef-musteriler.csv','firma;konum;bolge;sektor;tip;mesafe_km;durum;not\n'+
+$('#mexp').onclick=()=>indir('hedef-musteriler.csv',
+  'firma;konum;bolge;sektor;tip;mesafe_km;durum;iletisim;not\n'+
   musteriler().map(m=>[m.ad,m.konum,m.bolge,m.sektor.map(s=>SEK[s].ad).join(' / '),m.tip,
-    m.d2.toFixed(0),DUR[m.dur],m.not].map(alan).join(';')).join('\n'));
+    m.d2.toFixed(0),DUR[m.dur],m.ilt,m.not].map(alan).join(';')).join('\n'));
+
+/* ---------- OTOMATİK TESİS ARAMA (OpenStreetMap / Overpass) ---------- */
+const bulLayer = L.layerGroup().addTo(map);
+let BULUNAN = {};
+
+const SORGU = {
+  cimento:['["product"~"cement",i]','["name"~"cement|çimento|ciment|cimento",i]','["works"="cement"]'],
+  celik:  ['["product"~"steel|iron",i]','["name"~"steel|çelik|celik|demir|iron|metallurg|hadde|rolling mill|acier",i]'],
+  maden:  ['["landuse"="quarry"]','["man_made"="mineshaft"]','["name"~"mine|maden|mining|ocak",i]'],
+  dokum:  ['["product"~"cast|foundry",i]','["name"~"foundry|döküm|dokum|fonderie|giesserei",i]','["craft"="foundry"]'],
+  hepsi:  ['["man_made"="works"]','["industrial"="factory"]']
+};
+
+function overpassSorgu(tip, b){
+  const bbox = `${b.getSouth().toFixed(4)},${b.getWest().toFixed(4)},${b.getNorth().toFixed(4)},${b.getEast().toFixed(4)}`;
+  const taban = tip==='hepsi' ? '' : '["man_made"="works"]';
+  const parcalar = SORGU[tip].map(f =>
+    f.includes('landuse')||f.includes('mineshaft')||f.includes('man_made')||f.includes('industrial')||f.includes('craft')
+      ? `nwr${f}(${bbox});`
+      : `nwr${taban}${f}(${bbox}); nwr["industrial"]${f}(${bbox});`
+  ).join('\n  ');
+  return `[out:json][timeout:45];\n(\n  ${parcalar}\n);\nout center tags 200;`;
+}
+
+async function tesisAra(){
+  const b = map.getBounds();
+  const alanKm = haversine({lat:b.getSouth(),lng:b.getWest()},{lat:b.getNorth(),lng:b.getEast()});
+  if(alanKm > 2200){
+    $('#buldurum').textContent = 'Görünen alan çok geniş — servis zaman aşımına uğrar. Bir ülke veya bölge ölçeğine yakınlaştır.';
+    return;
+  }
+  const tip = $('#tip').value;
+  $('#bul').textContent='Aranıyor...'; $('#bul').disabled=true;
+  $('#buldurum').textContent='OpenStreetMap taranıyor, bu 10–30 saniye sürebilir.';
+  try{
+    const r = await fetch('https://overpass-api.de/api/interpreter',
+      {method:'POST', body:'data='+encodeURIComponent(overpassSorgu(tip,b))});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const j = await r.json();
+    bulSonuc(j.elements||[], tip);
+  }catch(e){
+    $('#buldurum').textContent = 'Arama başarısız: '+e.message+'. Servis yoğun olabilir, biraz sonra tekrar dene.';
+  }
+  $('#bul').textContent='Bu alanda ara'; $('#bul').disabled=false;
+}
+
+function bulSonuc(els, tip){
+  bulLayer.clearLayers(); BULUNAN={};
+  let n=0;
+  els.forEach(e=>{
+    const lat = e.lat ?? e.center?.lat, lng = e.lon ?? e.center?.lon, t = e.tags||{};
+    const ad = t.name || t.operator; if(!lat || !ad) return;
+    const id = 'B'+e.type+e.id;
+    const ilt = [t['contact:phone']||t.phone, t['contact:email']||t.email,
+                 t.website||t['contact:website']].filter(Boolean).join(' · ');
+    BULUNAN[id] = {id, ad, lat, lng, tip, ilt,
+      konum:[t['addr:city'],t['addr:country']].filter(Boolean).join(', '),
+      operator:t.operator||'', urun:t.product||''};
+    n++;
+    L.circleMarker([lat,lng],{radius:6,color:'#E6EDF3',weight:1.6,dashArray:'2 2',
+        fillColor:'#E6EDF3',fillOpacity:.08})
+      .bindPopup(`<strong>${esc(ad)}</strong><br>
+        <em>${esc([BULUNAN[id].konum, t.operator, t.product].filter(Boolean).join(' · ')||'OpenStreetMap kaydı')}</em>
+        ${ilt?`<br><em>${esc(ilt)}</em>`:''}
+        <br><button class="pin" style="margin-top:7px" onclick="bulEkle('${id}')">Hedef listeye ekle</button>`)
+      .addTo(bulLayer);
+  });
+  $('#buldurum').textContent = n
+    ? `${n} tesis bulundu. Beyaz kesikli işaretler — balona tıklayıp listene ekleyebilirsin.`
+    : 'Bu alanda kayıtlı tesis bulunamadı. Başka bir tesis tipi seç veya alanı genişlet.';
+}
+
+window.bulEkle = id => {
+  const b = BULUNAN[id]; if(!b) return;
+  if(MUS.some(m=>m.ad===b.ad && Math.abs(m.lat-b.lat)<0.01)) return alert('Bu tesis listende zaten var.');
+  const sk = b.tip==='hepsi' ? 'celik' : (b.tip==='dokum' ? 'celik' : b.tip);
+  MUS.push({id:'M'+Date.now(), ad:b.ad, konum:b.konum||'—', bolge:'Otomatik bulunan',
+    sektor:[sk], tip:'Tesis', lat:b.lat, lng:b.lng, not:b.operator?('İşletmeci: '+b.operator):'',
+    dur:0, ilt:b.ilt});
+  if(![...$('#mbol').options].some(o=>o.value==='Otomatik bulunan')){
+    const o=document.createElement('option'); o.value='Otomatik bulunan';
+    o.textContent='Otomatik bulunan'; $('#mbol').append(o);
+  }
+  map.closePopup(); ciz(); ciziM();
+  $('#buldurum').textContent = b.ad+' hedef listene eklendi.';
+};
+
+$('#bul').onclick = tesisAra;
+$('#bultemiz').onclick = () => { bulLayer.clearLayers(); BULUNAN={};
+  $('#buldurum').textContent='Bulunan tesisler silindi.'; };
 
 ciz(); ciziU(); ciziM();
 </script>
