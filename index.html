@@ -136,6 +136,11 @@
   .chk{width:16px;height:16px;accent-color:var(--steel);cursor:pointer}
   .empty{padding:34px 20px;color:var(--muted);text-align:center;font-size:13px;line-height:1.6}
 
+  .fmark{border-radius:50%;background:rgba(127,227,192,.13);border:1.5px solid #7FE3C0;
+         color:#7FE3C0;font-family:var(--mono);font-size:11px;text-align:center;
+         box-shadow:0 0 0 3px rgba(127,227,192,.07)}
+  .fmark:hover{background:rgba(127,227,192,.3)}
+
   .ringlbl{font-family:var(--mono);font-size:10.5px;color:#A9C0D4;background:rgba(11,15,20,.82);
            border:1px solid var(--ring);border-radius:2px;padding:1px 5px;white-space:nowrap}
   .leaflet-container{background:#0B0F14;font-family:var(--sans)}
@@ -190,6 +195,10 @@
       <div class="block">
         <label class="k">Sektör</label>
         <div class="chips" id="mapchips"></div>
+        <div class="chips" style="margin-top:8px">
+          <button class="chip" id="fuartog" data-k="fuar" aria-pressed="true"
+                  style="color:#7FE3C0;border-color:#7FE3C0">CastForge katılımcıları (585)</button>
+        </div>
       </div>
       <div class="block">
         <label class="k" for="tip">Otomatik tesis arama</label>
@@ -809,7 +818,14 @@ const FUAR_HAM = [["a & f Großserien GmbH","Würzburg","97074","Germany","H10 G
 let FUAR = FUAR_HAM.map((r,i)=>({id:'F'+i, ad:r[0], sehir:r[1], plz:r[2], ulke:r[3], stand:r[4],
                                  lat:r[5], lng:r[6]}));
 const fuarLayer = L.layerGroup().addTo(map);
-let fSort={k:'ad',d:1};
+let fSort={k:'ad',d:1}, fuarAcik = true;
+$('#fuartog').onclick = e => {
+  fuarAcik = e.target.getAttribute('aria-pressed') !== 'true';
+  e.target.setAttribute('aria-pressed', String(fuarAcik));
+  e.target.style.color = fuarAcik ? '#7FE3C0' : '';
+  e.target.style.borderColor = fuarAcik ? '#7FE3C0' : '';
+  fuarCiz();
+};
 
 [...new Set(FUAR.map(f=>f.ulke))].sort().forEach(u=>{
   const o=document.createElement('option'); o.value=u; o.textContent=u; $('#fu').append(o);
@@ -861,13 +877,26 @@ function ciziF(){
 
 function fuarCiz(){
   fuarLayer.clearLayers();
+  if(!fuarAcik) return;
+  const grup = {};
   FUAR.forEach(f=>{
     if(f.lat==null) return;
-    L.circleMarker([f.lat,f.lng],{radius:4,color:'#7FE3C0',weight:1.2,
-        fillColor:'#7FE3C0',fillOpacity:.35})
-      .bindPopup(`<strong>${esc(f.ad)}</strong><br>
-        <em>${esc(f.sehir)}, ${esc(f.ulke)} · Stand ${esc(f.stand)}</em><br>
-        <em>CastForge katılımcısı · ${haversine(center,f).toFixed(0)} km</em>`)
+    const k = f.lat.toFixed(3)+','+f.lng.toFixed(3);
+    (grup[k] = grup[k] || {lat:f.lat, lng:f.lng, sehir:f.sehir, ulke:f.ulke, list:[]}).list.push(f);
+  });
+  Object.values(grup).forEach(g=>{
+    const n = g.list.length;
+    const cap = n===1 ? 16 : Math.min(16 + Math.round(Math.sqrt(n)*7), 42);
+    const d = haversine(center, g);
+    const liste = g.list.slice(0,18).map(f=>
+      `<li>${esc(f.ad)} <em>· ${esc(f.stand)}</em></li>`).join('');
+    L.marker([g.lat,g.lng],{icon:L.divIcon({className:'', iconSize:[cap,cap],
+        iconAnchor:[cap/2,cap/2],
+        html:`<div class="fmark" style="width:${cap}px;height:${cap}px;line-height:${cap-4}px">${n>1?n:''}</div>`})})
+      .bindPopup(`<strong>${esc(g.sehir)}, ${esc(g.ulke)}</strong><br>
+        <em>${n} CastForge katılımcısı · ${d.toFixed(0)} km</em>
+        <ul style="max-height:190px;overflow:auto">${liste}</ul>
+        ${n>18?`<em>…ve ${n-18} firma daha</em>`:''}`)
       .addTo(fuarLayer);
   });
 }
@@ -893,7 +922,7 @@ $('#ffile').onchange=e=>{
       if(isNaN(lat)||isNaN(lng)) return;
       const f=FUAR.find(x=>x.ad===c[0]); if(f){f.lat=lat;f.lng=lng;n++;}
     });
-    fuarCiz(); fuarCiz(); ciziF();
+    fuarCiz(); ciziF();
     alert(n+' firmanın konumu yüklendi.');
   };
   rd.readAsText(file,'utf-8');
@@ -906,6 +935,6 @@ $('#fexp').onclick=()=>indir('castforge-katilimcilar.csv','firma;sehir;plz;ulke;
 document.querySelectorAll('[data-p=fuar] th[data-s]').forEach(th=>{
   th.onclick=()=>{const k=th.dataset.s; fSort={k,d:fSort.k===k?-fSort.d:1}; ciziF();};
 });
-ciziF();
+fuarCiz(); ciziF();
 
 </script>
