@@ -1,0 +1,608 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hedef Pazar — Harita, Ürün Yelpazesi, Müşteri Takibi</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F14; --panel:#12181F; --panel2:#0E141A; --line:#22303D;
+    --ink:#E6EDF3; --muted:#8496A8;
+    --steel:#F2A007; --cast:#E2574C; --mach:#48C3D6; --hadde:#B58BE8; --ok:#4CAF7D;
+    --ring:#5C7A94;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --cond:'Barlow Condensed',var(--sans);
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;
+       display:flex;flex-direction:column;overflow:hidden}
+  header{border-bottom:1px solid var(--line);background:var(--panel2);padding:10px 18px;
+         display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  header h1{font-family:var(--cond);font-weight:600;font-size:23px;letter-spacing:.04em;
+            text-transform:uppercase;margin:0}
+  .tabs{display:flex;gap:4px;margin-left:auto}
+  .tab{background:none;border:1px solid transparent;color:var(--muted);font-family:var(--cond);
+       font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;
+       border-radius:3px;cursor:pointer}
+  .tab[aria-selected=true]{color:var(--steel);border-color:var(--line);background:var(--panel)}
+  .tab:hover{color:var(--ink)}
+
+  main{flex:1;display:flex;min-height:0}
+  .pane{flex:1;display:none;min-height:0}
+  .pane[data-on=true]{display:flex}
+  .pane[data-p=harita]{flex-direction:row}
+  .pane[data-p=urun],.pane[data-p=musteri]{flex-direction:column}
+
+  aside{width:352px;flex:none;background:var(--panel);border-right:1px solid var(--line);
+        display:flex;flex-direction:column;min-height:0}
+  #map{flex:1;background:#0B0F14}
+  .block{padding:13px 16px;border-bottom:1px solid var(--line)}
+  label.k{display:block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;
+          font-size:11.5px;color:var(--muted);margin-bottom:6px}
+
+  input[type=text],select{background:var(--panel2);border:1px solid var(--line);color:var(--ink);
+       border-radius:3px;padding:7px 9px;font-family:var(--mono);font-size:12.5px}
+  input[type=text]{width:100%}
+  .bar input[type=text]{width:auto;min-width:180px}
+  input:focus,select:focus,button:focus-visible,.chip:focus-visible{outline:2px solid var(--steel);outline-offset:1px}
+  button{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:3px;
+       padding:7px 12px;font-family:var(--cond);font-size:13px;letter-spacing:.07em;
+       text-transform:uppercase;cursor:pointer}
+  button:hover{border-color:var(--steel);color:var(--steel)}
+  button.primary{border-color:var(--steel);color:var(--steel)}
+  .row{display:flex;gap:8px}
+  .spacer{margin-left:auto}
+  .count{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);border-radius:20px;padding:5px 10px;cursor:pointer;
+        font-size:11.5px;color:var(--muted);background:var(--panel2);user-select:none}
+  .chip[aria-pressed=true]{color:var(--ink);border-color:currentColor}
+  .chip[data-k=hadde][aria-pressed=true]{color:var(--hadde)}
+  .chip[data-k=celik][aria-pressed=true]{color:var(--steel)}
+  .chip[data-k=cimento][aria-pressed=true]{color:var(--cast)}
+  .chip[data-k=maden][aria-pressed=true]{color:var(--mach)}
+  .chip[data-k=enerji][aria-pressed=true]{color:var(--ok)}
+
+  #readout{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.7}
+  #readout b{color:var(--ink);font-weight:500}
+  #list{flex:1;overflow-y:auto;min-height:0}
+  .item{display:flex;gap:11px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);cursor:pointer}
+  .item:hover{background:#161E26}
+  .item .nm{flex:1;min-width:0}
+  .item .nm strong{display:block;font-weight:500;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .item .nm span{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .item .dst{text-align:right;font-family:var(--mono);font-size:13px;white-space:nowrap}
+  .item .dst small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.06em}
+  .compass{width:24px;height:24px;flex:none}
+  .compass circle{fill:none;stroke:var(--line)}
+
+  .bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:11px 18px;
+       border-bottom:1px solid var(--line);background:var(--panel)}
+  .scroll{flex:1;overflow-y:auto;min-height:0}
+  table{width:100%;border-collapse:collapse}
+  th{position:sticky;top:0;background:var(--panel2);z-index:2;text-align:left;
+     font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:11.5px;
+     color:var(--muted);font-weight:500;padding:9px 14px;border-bottom:1px solid var(--line);
+     cursor:pointer;white-space:nowrap}
+  th:hover{color:var(--ink)}
+  td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr.r:hover{background:#161E26}
+  td.nm{font-weight:500}
+  td .sub{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+  td.mono{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .sek{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+       border:1px solid currentColor;border-radius:3px;padding:1px 6px;white-space:nowrap;margin:1px 0}
+  .s-hadde{color:var(--hadde)} .s-celik{color:var(--steel)} .s-cimento{color:var(--cast)}
+  .s-maden{color:var(--mach)} .s-enerji{color:var(--ok)}
+  select.dur{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:12px;
+       padding:4px 6px;border-radius:20px}
+  .d0{color:var(--muted)} .d1{color:var(--mach)} .d2{color:var(--steel)}
+  .d3{color:var(--hadde)} .d4{color:var(--ok)} .d5{color:var(--cast)}
+  .note{width:100%;background:transparent;border:1px solid transparent;color:var(--muted);
+       font-family:var(--sans);font-size:12.5px;padding:4px 6px;border-radius:3px;resize:vertical;min-height:28px}
+  .note:hover{border-color:var(--line)}
+  .note:focus{border-color:var(--steel);color:var(--ink);background:var(--panel2);outline:none}
+  .pin{background:none;border:1px solid var(--line);border-radius:3px;color:var(--muted);
+       font-family:var(--cond);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+       padding:3px 7px;cursor:pointer;white-space:nowrap}
+  .pin:hover{color:var(--steel);border-color:var(--steel)}
+
+  .pipe{display:flex;padding:11px 18px;border-bottom:1px solid var(--line);background:var(--panel2);flex-wrap:wrap}
+  .st{flex:1;min-width:92px;border-left:2px solid var(--line);padding:2px 12px}
+  .st b{display:block;font-family:var(--mono);font-size:19px;font-weight:500;line-height:1.2}
+  .st span{font-family:var(--cond);text-transform:uppercase;letter-spacing:.09em;font-size:11px;color:var(--muted)}
+  .st:nth-child(1){border-color:#3A4A59} .st:nth-child(2){border-color:var(--mach)}
+  .st:nth-child(3){border-color:var(--steel)} .st:nth-child(4){border-color:var(--hadde)}
+  .st:nth-child(5){border-color:var(--ok)} .st:nth-child(6){border-color:var(--cast)}
+  .chk{width:16px;height:16px;accent-color:var(--steel);cursor:pointer}
+  .empty{padding:34px 20px;color:var(--muted);text-align:center;font-size:13px;line-height:1.6}
+
+  .ringlbl{font-family:var(--mono);font-size:10.5px;color:#A9C0D4;background:rgba(11,15,20,.82);
+           border:1px solid var(--ring);border-radius:2px;padding:1px 5px;white-space:nowrap}
+  .leaflet-container{background:#0B0F14;font-family:var(--sans)}
+  .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--panel);color:var(--ink);
+           border-radius:3px;box-shadow:0 6px 24px rgba(0,0,0,.6)}
+  .leaflet-popup-content{margin:11px 13px;font-size:13px;line-height:1.5;max-width:240px}
+  .leaflet-popup-content em{font-family:var(--mono);font-style:normal;color:var(--muted);font-size:11.5px}
+  .leaflet-popup-content ul{margin:6px 0 0;padding-left:16px;color:var(--muted);font-size:12px}
+  .leaflet-control-attribution{background:rgba(11,15,20,.8)!important;color:#6C7F91!important}
+  .leaflet-control-attribution a{color:#8FA8BE!important}
+
+  footer{border-top:1px solid var(--line);padding:7px 18px;font-size:11px;color:var(--muted);background:var(--panel2)}
+  @media(max-width:820px){
+    .tabs{width:100%;margin-left:0}
+    .pane[data-p=harita]{flex-direction:column}
+    aside{width:auto;border-right:0;border-top:1px solid var(--line);order:2;max-height:44vh}
+    #map{order:1;min-height:42vh}
+    th:nth-child(4),td:nth-child(4){display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header>
+  <h1>Hedef Pazar</h1>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-p="harita">Harita</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="urun">Ürün yelpazesi</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="musteri">Hedef müşteriler</button>
+  </div>
+</header>
+
+<main>
+  <!-- HARİTA -->
+  <section class="pane" data-p="harita" data-on="true">
+    <aside>
+      <div class="block">
+        <label class="k" for="q">Merkez noktası</label>
+        <div class="row">
+          <input type="text" id="q" placeholder="Şehir veya adres ara" autocomplete="off">
+          <button id="go">Bul</button>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button id="hq" style="flex:1">Karabük'e dön</button>
+          <button id="clr">Temizle</button>
+        </div>
+      </div>
+      <div class="block">
+        <label class="k" for="r">Çaplar (km)</label>
+        <input type="text" id="r" value="500, 1500, 3000">
+      </div>
+      <div class="block">
+        <label class="k">Sektör</label>
+        <div class="chips" id="mapchips"></div>
+      </div>
+      <div class="block" id="readout">Merkez: Karabük (Kardökmak)</div>
+      <div id="list"></div>
+    </aside>
+    <div id="map"></div>
+  </section>
+
+  <!-- ÜRÜNLER -->
+  <section class="pane" data-p="urun">
+    <div class="bar">
+      <input type="text" id="uq" placeholder="Parça ara">
+      <select id="usek"><option value="">Tüm sektörler</option></select>
+      <select id="uagir">
+        <option value="">Tüm tonajlar</option>
+        <option value="a">5 ton altı</option>
+        <option value="b">5 – 40 ton</option>
+        <option value="c">40 ton üstü</option>
+      </select>
+      <button id="usec">Sadece seçilenler</button>
+      <span class="spacer"></span>
+      <span class="count" id="ucount"></span>
+      <button id="uekle">Parça ekle</button>
+      <button id="uexp">CSV indir</button>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr>
+          <th style="width:34px"></th>
+          <th data-s="ad">Parça</th><th data-s="sektor">Sektör</th>
+          <th data-s="ton">Tonaj</th><th>Not</th>
+        </tr></thead>
+        <tbody id="utb"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- MÜŞTERİLER -->
+  <section class="pane" data-p="musteri">
+    <div class="pipe" id="pipe"></div>
+    <div class="bar">
+      <input type="text" id="mq" placeholder="Firma veya ülke ara">
+      <select id="msek"><option value="">Tüm sektörler</option></select>
+      <select id="mbol"><option value="">Tüm bölgeler</option></select>
+      <select id="mtip"><option value="">Tesis + OEM</option><option>Tesis</option><option>OEM</option></select>
+      <select id="mdur"><option value="">Tüm durumlar</option></select>
+      <button id="mkap">Sadece kapsam içi</button>
+      <span class="spacer"></span>
+      <span class="count" id="mcount"></span>
+      <button id="mekle">Firma ekle</button>
+      <button id="mexp">CSV indir</button>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr>
+          <th data-s="ad">Firma</th><th data-s="bolge">Konum</th>
+          <th data-s="sektor">Sektör</th><th data-s="d">Mesafe</th>
+          <th data-s="dur" style="width:145px">Durum</th>
+          <th style="width:26%">Not / sonraki adım</th>
+          <th style="width:56px"></th>
+        </tr></thead>
+        <tbody id="mtb"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Değişiklikler tarayıcı belleğinde tutulur — kapatmadan önce <b>CSV indir</b> ile dışa aktar.
+  Koordinatlar ve müşteri listesi yaklaşıktır; doğrulanmış satış istihbaratı değildir.
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const SEK = {
+  hadde:  {ad:'Haddehane / Pres', c:'s-hadde',   renk:'#B58BE8'},
+  celik:  {ad:'Demir-Çelik',      c:'s-celik',   renk:'#F2A007'},
+  cimento:{ad:'Çimento',          c:'s-cimento', renk:'#E2574C'},
+  maden:  {ad:'Madencilik',       c:'s-maden',   renk:'#48C3D6'},
+  enerji: {ad:'Enerji',           c:'s-enerji',  renk:'#4CAF7D'}
+};
+const DUR = ['Hedef','Temas','Teklif','Numune/Onay','Sipariş','Kayıp'];
+const EV = {lat:41.200, lng:32.630};   // Kardökmak — Karabük
+
+/* --- ÜRÜN YELPAZESİ --- */
+let URUN = [
+  ['Hadde ayağı (mill housing/stand)','hadde',40,150,'Kapalı veya açık tip. Pencere ve mesnet yüzeyi işleme aynı sahada.'],
+  ['Chock (merdane yatak gövdesi)','hadde',2,25,'Çelik veya sfero. Tekrarlayan iş.'],
+  ['Basma mili (screw down) gövde ve somunu','hadde',1,15,'Bronz somun + çelik gövde.'],
+  ['Sole plate / base plate','hadde',3,30,'Stand grubuyla paket gider.'],
+  ['Spindle gövdesi, muf ve kaplin','hadde',1,20,'Mafsallı mil grubu.'],
+  ['Pinion stand gövdesi','hadde',10,60,'Dişli grubuyla birlikte.'],
+  ['Roller table çerçevesi ve makara gövdesi','hadde',0.5,8,'Adetli, tekrarlayan.'],
+  ['Haddehane merdanesi','hadde',2,40,'Döküm ve dövme. Sıcak/soğuk hat.'],
+  ['Pres gövdesi / kolonu','hadde',20,120,'C tipi veya sütunlu. Dövme ve hurda presleri.'],
+  ['Pres tablası ve koç (ram)','hadde',10,60,''],
+  ['Eksantrik mil ve biyel','hadde',3,30,'Büyük tonaj krank pres.'],
+  ['Cüruf potası ve kapağı','celik',30,120,'EAF ve yüksek fırın. Sürekli tüketilir.'],
+  ['Yüksek fırın çanı, ring ve şarj konisi','celik',10,80,'Reline kampanyalarında toplu yenilenir.'],
+  ['Pota taşıyıcı çatal ve mesnetler','celik',5,40,''],
+  ['Tandiş ve pota arabası şasisi','celik',10,60,''],
+  ['Kok kırıcı gövde ve çeneleri','celik',3,35,''],
+  ['Sinter palet arabası ve ızgarası','celik',0.5,5,'Adetli, tekrarlayan.'],
+  ['Tav fırını yürüyen kiriş parçaları','celik',5,40,''],
+  ['Dişli çemberi (girth gear)','cimento',20,90,'6–10 m çap. Ana ürün.'],
+  ['Pinyon ve şaft','cimento',2,20,'Girth gear ile birlikte satılır.'],
+  ['Fırın bandajı (kiln tyre)','cimento',20,80,''],
+  ['Fırın destek rulosu','cimento',10,50,''],
+  ['Dik değirmen tablası ve ruloları','cimento',8,60,'Değirmen dönüşüm projeleri fırsat.'],
+  ['Klinker soğutucu gövde parçaları','cimento',3,25,''],
+  ['Kırıcı rotoru ve çekiçleri','cimento',1,20,''],
+  ['Konik/çeneli kırıcı gövdesi','maden',15,90,''],
+  ['Kırıcı mantosu ve konkavı','maden',2,25,'Yüksek manganlı. Aşınma, tekrarlayan.'],
+  ['Değirmen kapağı (mill head)','maden',20,100,'Tek parça büyük döküm için ideal kalem.'],
+  ['Değirmen astarı','maden',0.5,6,'Adetli, yüksek tekrar.'],
+  ['Dragline / ekskavatör kova, adaptör, diş','maden',0.5,40,''],
+  ['Konveyör tahrik tamburu','maden',2,25,''],
+  ['Yüksek manganlı (Hadfield) aşınma parçaları','maden',0.3,15,''],
+  ['Değirmen flanşı','enerji',5,40,''],
+  ['Türbin gövde ve difüzör dökümü','enerji',10,80,'Hidroelektrik.'],
+  ['Rüzgar türbini rotor göbeği (hub) ve ana şasi','enerji',10,60,'Sfero. Seri talep potansiyeli.'],
+  ['Vana gövdeleri ve kazan bağlantı dökümleri','enerji',1,25,'']
+].map((r,i)=>({id:'U'+i, ad:r[0], sektor:r[1], min:r[2], max:r[3], not:r[4], sec:false}));
+
+/* --- HEDEF MÜŞTERİLER --- [ad, konum, bölge, sektörler, tip, lat, lng, not] */
+let MUS = [
+  ['Kardemir','Karabük','Yurt içi',['celik','hadde'],'Tesis',41.200,32.630,'Ana hissedar. Hadde standı ve pota işleri doğal akış.'],
+  ['Erdemir','Kdz. Ereğli','Yurt içi',['celik','hadde'],'Tesis',41.282,31.420,'Yassı hat, sürekli stand ve chock yenileme.'],
+  ['İsdemir','İskenderun','Yurt içi',['celik','hadde'],'Tesis',36.660,36.160,'Yüksek fırın reline takvimi izlenmeli.'],
+  ['İçdaş','Biga, Çanakkale','Yurt içi',['celik','hadde'],'Tesis',40.360,26.980,''],
+  ['Habaş','Aliağa, İzmir','Yurt içi',['celik','hadde'],'Tesis',38.790,26.940,'EAF, cüruf potası tüketimi yüksek.'],
+  ['Çolakoğlu Metalurji','Dilovası','Yurt içi',['celik','hadde'],'Tesis',40.780,29.530,''],
+  ['Tosyalı Holding','Osmaniye','Yurt içi',['celik','hadde'],'Tesis',37.070,36.200,'Cezayir yatırımı üzerinden ihracata köprü.'],
+  ['Oyak Çimento','Ankara','Yurt içi',['cimento'],'Tesis',39.925,32.866,'Çok tesisli grup, tek temas noktası.'],
+  ['Limak Çimento','Ankara','Yurt içi',['cimento'],'Tesis',39.900,32.850,''],
+  ['Çimsa','Mersin','Yurt içi',['cimento'],'Tesis',36.800,34.640,''],
+  ['Eti Bakır','Ankara','Yurt içi',['maden'],'Tesis',39.930,32.850,'Kırıcı ve değirmen parçaları.'],
+  ['Eti Alüminyum','Seydişehir, Konya','Yurt içi',['maden','enerji'],'Tesis',37.420,31.850,''],
+  ['Soma / Tunçbilek İşletmeleri','Manisa-Kütahya','Yurt içi',['maden'],'Tesis',39.180,27.610,'Dragline ve konveyör parçaları.'],
+
+  ['HBIS Serbia','Smederevo, Sırbistan','Balkanlar',['celik','hadde'],'Tesis',44.660,20.930,'Entegre tesis, yüksek fırın. Karayolu erişimi iyi.'],
+  ['Liberty Galati','Galati, Romanya','Balkanlar',['celik','hadde'],'Tesis',45.430,28.030,'Entegre, sürekli yedek parça ihtiyacı.'],
+  ['ArcelorMittal Zenica','Zenica, Bosna','Balkanlar',['celik'],'Tesis',44.200,17.910,''],
+  ['Stomana Industry','Pernik, Bulgaristan','Balkanlar',['celik','hadde'],'Tesis',42.600,23.030,'EAF + haddehane.'],
+  ['Aurubis Bulgaria','Pirdop, Bulgaristan','Balkanlar',['maden'],'Tesis',42.700,24.150,'Bulgaristan şubesi üzerinden erişim kolay.'],
+  ['KCM','Plovdiv, Bulgaristan','Balkanlar',['maden'],'Tesis',42.130,24.740,''],
+  ['Ellatzite-Med','Etropole, Bulgaristan','Balkanlar',['maden'],'Tesis',42.830,24.000,'Bakır madeni, kırıcı ve değirmen.'],
+  ['Asarel-Medet','Panagyurishte, Bulgaristan','Balkanlar',['maden'],'Tesis',42.500,24.180,''],
+  ['Devnya Cement','Devnya, Bulgaristan','Balkanlar',['cimento'],'Tesis',43.230,27.560,''],
+  ['Zlatna Panega Cement','Lovech, Bulgaristan','Balkanlar',['cimento'],'Tesis',43.100,24.150,''],
+  ['Zijin Bor','Bor, Sırbistan','Balkanlar',['maden'],'Tesis',44.070,22.100,'Bakır kompleksi, genişleme yatırımı.'],
+  ['Hellas Gold','Halkidiki, Yunanistan','Balkanlar',['maden'],'Tesis',40.500,23.700,''],
+
+  ['Ezz Steel','Kahire, Mısır','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',30.050,31.240,'Bölgenin en büyük hacmi.'],
+  ['Suez Steel','Süveyş, Mısır','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',29.970,32.550,''],
+  ['Suez Cement','Kahire, Mısır','Ortadoğu / K. Afrika',['cimento'],'Tesis',30.030,31.230,''],
+  ['Arabian Cement','Kahire, Mısır','Ortadoğu / K. Afrika',['cimento'],'Tesis',29.980,31.300,''],
+  ['GICA','Cezayir','Ortadoğu / K. Afrika',['cimento'],'Tesis',36.750,3.060,'Devlet çimento grubu, çok hatlı.'],
+  ['Tosyalı Algérie','Oran, Cezayir','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',35.700,-0.630,'Türk sermayesi — giriş kolaylığı.'],
+  ['Bellara Steel (AQS)','Jijel, Cezayir','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',36.720,5.900,''],
+  ['OCP Group','Khouribga, Fas','Ortadoğu / K. Afrika',['maden'],'Tesis',32.880,-6.910,'Fosfat. Devasa öğütme/kırma parkı.'],
+  ['LafargeHolcim Maroc','Casablanca, Fas','Ortadoğu / K. Afrika',['cimento'],'Tesis',33.570,-7.590,''],
+  ['JPMC','Amman, Ürdün','Ortadoğu / K. Afrika',['maden'],'Tesis',31.950,35.930,'Fosfat.'],
+  ['Karbala / Bazian Cement','Irak','Ortadoğu / K. Afrika',['cimento'],'Tesis',32.610,44.020,'Yeniden devreye alınan hatlar.'],
+  ['Hadeed (Sabic)','Cubail, S. Arabistan','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',27.000,49.660,'Girişi zor, tek seferlik büyük iş.'],
+  ['EGA','Dubai, BAE','Ortadoğu / K. Afrika',['maden','enerji'],'Tesis',24.900,55.000,''],
+
+  ['Danieli','Buttrio, İtalya','Avrupa OEM',['hadde','celik'],'OEM',46.000,13.340,'Haddehane tasarımcısı. Türkiye projeleri çok, denetime gelmesi kolay.'],
+  ['SMS group','Düsseldorf, Almanya','Avrupa OEM',['hadde','celik'],'OEM',51.230,6.780,'Ağır döküm gövdeyi fason döktürür. En değerli hedef.'],
+  ['Primetals Technologies','Linz, Avusturya','Avrupa OEM',['hadde','celik'],'OEM',48.300,14.290,''],
+  ['Tenova','Castellanza, İtalya','Avrupa OEM',['celik','hadde'],'OEM',45.610,8.900,''],
+  ['FLSmidth','Kopenhag, Danimarka','Avrupa OEM',['cimento','maden'],'OEM',55.680,12.570,'Kendi ağır dökümhanesi yok.'],
+  ['thyssenkrupp Polysius','Beckum, Almanya','Avrupa OEM',['cimento','maden'],'OEM',51.760,8.040,''],
+  ['KHD Humboldt Wedag','Köln, Almanya','Avrupa OEM',['cimento'],'OEM',50.940,6.960,''],
+  ['Loesche','Düsseldorf, Almanya','Avrupa OEM',['cimento'],'OEM',51.220,6.790,'Dik değirmen. Tabla ve rulo.'],
+  ['Gebr. Pfeiffer','Kaiserslautern, Almanya','Avrupa OEM',['cimento'],'OEM',49.440,7.760,''],
+  ['Metso','Tampere, Finlandiya','Avrupa OEM',['maden'],'OEM',61.500,23.760,'Kırıcı ve değirmen.'],
+  ['Sandvik','Stockholm, İsveç','Avrupa OEM',['maden'],'OEM',59.330,18.070,''],
+  ['Weir Minerals','Glasgow, İngiltere','Avrupa OEM',['maden'],'OEM',55.860,-4.250,'']
+].map((r,i)=>({id:'M'+i, ad:r[0], konum:r[1], bolge:r[2], sektor:r[3], tip:r[4],
+                lat:r[5], lng:r[6], not:r[7], dur:0}));
+
+/* ---------- ortak ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const aktif = new Set(Object.keys(SEK));
+let center = {...EV}, sadeceKapsam = false, uSadece = false;
+let uSort={k:'sektor',d:1}, mSort={k:'d',d:1};
+
+function haversine(a,b){
+  const R=6371,t=Math.PI/180, dLat=(b.lat-a.lat)*t, dLng=(b.lng-a.lng)*t;
+  const h=Math.sin(dLat/2)**2+Math.cos(a.lat*t)*Math.cos(b.lat*t)*Math.sin(dLng/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+function bearing(a,b){
+  const t=Math.PI/180;
+  const y=Math.sin((b.lng-a.lng)*t)*Math.cos(b.lat*t);
+  const x=Math.cos(a.lat*t)*Math.sin(b.lat*t)-Math.sin(a.lat*t)*Math.cos(b.lat*t)*Math.cos((b.lng-a.lng)*t);
+  return (Math.atan2(y,x)/t+360)%360;
+}
+const YON=['K','KD','D','GD','G','GB','B','KB'];
+const yon = d => YON[Math.round(d/45)%8];
+const caplar = () => ($('#r').value.match(/\d+(\.\d+)?/g)||[]).map(Number).filter(n=>n>0).sort((a,b)=>a-b).slice(0,4);
+const maxCap = () => { const r=caplar(); return r.length ? r[r.length-1] : Infinity; };
+const bant = u => u.max<=5 ? 'a' : (u.min>=40 ? 'c' : 'b');
+const sekEt = k => `<span class="sek ${SEK[k].c}">${SEK[k].ad}</span>`;
+
+/* müşterinin sektörüne göre önerilen kalemler */
+const oneri = m => URUN.filter(u=>m.sektor.includes(u.sektor) && u.max>=20)
+                      .sort((a,b)=>b.max-a.max).slice(0,4);
+
+/* ---------- sekmeler ---------- */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick = () => {
+    document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',String(x===t)));
+    document.querySelectorAll('.pane').forEach(p=>p.dataset.on=String(p.dataset.p===t.dataset.p));
+    if(t.dataset.p==='harita') setTimeout(()=>map.invalidateSize(),60);
+  };
+});
+
+/* ---------- harita ---------- */
+const map = L.map('map').setView([44,25],4);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  {maxZoom:19, attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+const ringLayer=L.layerGroup().addTo(map), siteLayer=L.layerGroup().addTo(map);
+let centerMarker=null;
+const pins = {};
+
+Object.entries(SEK).forEach(([k,v])=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.dataset.k=k; b.setAttribute('aria-pressed','true'); b.textContent=v.ad;
+  b.onclick=()=>{ const on=b.getAttribute('aria-pressed')==='true';
+    b.setAttribute('aria-pressed',String(!on)); on?aktif.delete(k):aktif.add(k); ciz(); ciziM(); };
+  $('#mapchips').append(b);
+  ['#usek','#msek'].forEach(s=>{const o=document.createElement('option');o.value=k;o.textContent=v.ad;$(s).append(o);});
+});
+[...new Set(MUS.map(m=>m.bolge))].forEach(b=>{const o=document.createElement('option');o.value=b;o.textContent=b;$('#mbol').append(o);});
+DUR.forEach((d,i)=>{const o=document.createElement('option');o.value=i;o.textContent=d;$('#mdur').append(o);});
+
+function kapsam(){
+  const mx=maxCap();
+  return MUS.map(m=>({...m, d:haversine(center,m), b:bearing(center,m)}))
+            .filter(m=>m.sektor.some(s=>aktif.has(s)) && m.d<=mx)
+            .sort((a,b)=>a.d-b.d);
+}
+
+function ciz(){
+  ringLayer.clearLayers(); siteLayer.clearLayers();
+  caplar().forEach(km=>{
+    L.circle(center,{radius:km*1000,color:'#5C7A94',weight:1,opacity:.7,
+      fillColor:'#5C7A94',fillOpacity:.035,dashArray:'4 5'}).addTo(ringLayer);
+    L.marker([center.lat+km/111.32,center.lng],{interactive:false,
+      icon:L.divIcon({className:'',html:`<div class="ringlbl">${km} km</div>`,iconSize:[0,0]})}).addTo(ringLayer);
+  });
+
+  if(centerMarker) centerMarker.setLatLng(center);
+  else centerMarker = L.marker(center,{draggable:true,icon:L.divIcon({className:'',iconSize:[16,16],
+      iconAnchor:[8,8],html:'<div style="width:16px;height:16px;border-radius:50%;background:#0B0F14;'+
+      'border:3px solid #F2A007;box-shadow:0 0 0 4px rgba(242,160,7,.18)"></div>'})})
+      .addTo(map).bindPopup('<strong>Merkez</strong>')
+      .on('drag dragend',e=>{center=e.target.getLatLng();ciz();ciziM();});
+
+  const mx=maxCap();
+  MUS.forEach(m=>{
+    if(!m.sektor.some(s=>aktif.has(s))) return;
+    const d=haversine(center,m); if(d>mx) return;
+    const renk=SEK[m.sektor[0]].renk;
+    const mk=L.circleMarker([m.lat,m.lng],{radius:m.tip==='OEM'?6.5:5.5,color:renk,weight:1.6,
+        fillColor:renk,fillOpacity:m.tip==='OEM'?.15:.55})
+      .bindPopup(`<strong>${esc(m.ad)}</strong><br>
+        <em>${esc(m.konum)} · ${m.tip} · ${d.toFixed(0)} km ${yon(bearing(center,m))}</em><br>
+        ${m.sektor.map(sekEt).join(' ')}
+        <ul>${oneri(m).map(u=>`<li>${esc(u.ad)}</li>`).join('')}</ul>
+        <em style="display:block;margin-top:6px">Durum: ${DUR[m.dur]}</em>`)
+      .addTo(siteLayer);
+    pins[m.id]=mk;
+  });
+
+  const rows=kapsam();
+  $('#readout').innerHTML =
+    `MERKEZ <b>${center.lat.toFixed(3)}, ${center.lng.toFixed(3)}</b><br>`+
+    `KAPSAM <b>${isFinite(mx)?mx+' km':'sınırsız'}</b> · FİRMA <b>${rows.length}</b><br>`+
+    `Tesis <b>${rows.filter(r=>r.tip==='Tesis').length}</b> · OEM <b>${rows.filter(r=>r.tip==='OEM').length}</b>`;
+
+  $('#list').innerHTML = rows.length ? rows.map(m=>`
+    <div class="item" data-id="${m.id}">
+      <svg class="compass" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.2"/>
+        <path d="M12 3.6 L15 12 L12 10.2 L9 12 Z" fill="${SEK[m.sektor[0]].renk}"
+              transform="rotate(${m.b.toFixed(0)} 12 12)"/></svg>
+      <div class="nm"><strong>${esc(m.ad)}</strong><span>${esc(m.konum)} · ${DUR[m.dur]}</span></div>
+      <div class="dst">${m.d.toFixed(0)}<small>km ${yon(m.b)}</small></div>
+    </div>`).join('')
+    : '<div class="empty">Bu çap ve sektör filtresinde firma yok. Çapı büyüt veya sektör ekle.</div>';
+
+  $('#list').querySelectorAll('.item').forEach(el=>{
+    el.onclick = () => goster(el.dataset.id);
+  });
+}
+function goster(id){
+  const m=MUS.find(x=>x.id===id); if(!m) return;
+  document.querySelector('.tab[data-p=harita]').click();
+  map.flyTo([m.lat,m.lng], Math.max(map.getZoom(),7), {duration:.7});
+  setTimeout(()=>pins[m.id] && pins[m.id].openPopup(), 750);
+}
+
+map.on('click', e => { center={lat:e.latlng.lat,lng:e.latlng.lng}; ciz(); ciziM(); });
+$('#r').addEventListener('input',()=>{ciz();ciziM();});
+$('#hq').onclick = () => { center={...EV}; map.flyTo(center,5,{duration:.7}); ciz(); ciziM(); };
+$('#clr').onclick = () => { $('#r').value=''; ciz(); ciziM(); };
+async function ara(){
+  const q=$('#q').value.trim(); if(!q) return;
+  $('#go').textContent='...';
+  try{
+    const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(q));
+    const j=await r.json();
+    if(!j.length){$('#q').value='';$('#q').placeholder='Bulunamadı — başka bir ad dene';}
+    else{center={lat:+j[0].lat,lng:+j[0].lon};map.flyTo(center,7,{duration:.7});ciz();ciziM();}
+  }catch(e){$('#q').value='';$('#q').placeholder='Arama çalışmıyor — haritaya tıkla';}
+  $('#go').textContent='Bul';
+}
+$('#go').onclick=ara; $('#q').addEventListener('keydown',e=>{if(e.key==='Enter')ara();});
+
+/* ---------- ürün tablosu ---------- */
+function urunler(){
+  const q=$('#uq').value.toLowerCase().trim(), s=$('#usek').value, a=$('#uagir').value;
+  return URUN.filter(u=>(!q||(u.ad+' '+u.not).toLowerCase().includes(q)) &&
+    (!s||u.sektor===s) && (!a||bant(u)===a) && (!uSadece||u.sec))
+    .sort((x,y)=>{const k=uSort.k;
+      return (k==='ton'? x.min-y.min : String(x[k]).localeCompare(String(y[k]),'tr'))*uSort.d;});
+}
+function ciziU(){
+  const rows=urunler();
+  $('#ucount').textContent=`${rows.length} / ${URUN.length} parça · ${URUN.filter(u=>u.sec).length} seçili`;
+  $('#utb').innerHTML = rows.length ? rows.map(u=>`
+    <tr class="r" data-id="${u.id}">
+      <td><input class="chk" type="checkbox" ${u.sec?'checked':''} aria-label="${esc(u.ad)} seç"></td>
+      <td class="nm">${esc(u.ad)}</td><td>${sekEt(u.sektor)}</td>
+      <td class="mono">${u.min}–${u.max} t</td>
+      <td><textarea class="note" rows="1" placeholder="Not ekle">${esc(u.not)}</textarea></td>
+    </tr>`).join('') : '<tr><td colspan="5" class="empty">Bu filtreye uyan parça yok.</td></tr>';
+  $('#utb').querySelectorAll('tr.r').forEach(tr=>{
+    const u=URUN.find(x=>x.id===tr.dataset.id);
+    tr.querySelector('.chk').onchange=e=>{u.sec=e.target.checked;ciziU();};
+    tr.querySelector('.note').onchange=e=>{u.not=e.target.value;};
+  });
+}
+
+/* ---------- müşteri tablosu ---------- */
+function musteriler(){
+  const q=$('#mq').value.toLowerCase().trim(), s=$('#msek').value, b=$('#mbol').value,
+        t=$('#mtip').value, d=$('#mdur').value, mx=maxCap();
+  return MUS.map(m=>({...m, d2:haversine(center,m)}))
+    .filter(m=>(!q||(m.ad+' '+m.konum+' '+m.not).toLowerCase().includes(q)) &&
+      m.sektor.some(x=>aktif.has(x)) &&
+      (!s||m.sektor.includes(s)) && (!b||m.bolge===b) && (!t||m.tip===t) &&
+      (d===''||m.dur===+d) && (!sadeceKapsam||m.d2<=mx))
+    .sort((x,y)=>{const k=mSort.k;
+      return (k==='d'? x.d2-y.d2 : k==='dur'? x.dur-y.dur
+        : String(x[k]).localeCompare(String(y[k]),'tr'))*mSort.d;});
+}
+function ciziM(){
+  const rows=musteriler();
+  $('#mcount').textContent=`${rows.length} / ${MUS.length} firma`;
+  $('#pipe').innerHTML=DUR.map((d,i)=>
+    `<div class="st"><b>${MUS.filter(m=>m.dur===i).length}</b><span>${d}</span></div>`).join('');
+  $('#mtb').innerHTML = rows.length ? rows.map(m=>`
+    <tr class="r" data-id="${m.id}">
+      <td class="nm">${esc(m.ad)}<span class="sub">${m.tip}</span></td>
+      <td class="mono">${esc(m.konum)}<span class="sub">${esc(m.bolge)}</span></td>
+      <td>${m.sektor.map(sekEt).join(' ')}</td>
+      <td class="mono">${m.d2.toFixed(0)} km</td>
+      <td><select class="dur d${m.dur}" aria-label="${esc(m.ad)} durumu">${
+        DUR.map((d,i)=>`<option value="${i}" ${i===m.dur?'selected':''}>${d}</option>`).join('')}</select></td>
+      <td><textarea class="note" rows="1" placeholder="Not / sonraki adım">${esc(m.not)}</textarea></td>
+      <td><button class="pin">Harita</button></td>
+    </tr>`).join('') : '<tr><td colspan="7" class="empty">Bu filtreye uyan firma yok.</td></tr>';
+  $('#mtb').querySelectorAll('tr.r').forEach(tr=>{
+    const m=MUS.find(x=>x.id===tr.dataset.id);
+    tr.querySelector('.dur').onchange=e=>{m.dur=+e.target.value;ciziM();ciz();};
+    tr.querySelector('.note').onchange=e=>{m.not=e.target.value;};
+    tr.querySelector('.pin').onclick=()=>goster(m.id);
+  });
+}
+
+/* ---------- filtreler ---------- */
+['#uq','#usek','#uagir'].forEach(s=>$(s).addEventListener('input',ciziU));
+['#mq','#msek','#mbol','#mtip','#mdur'].forEach(s=>$(s).addEventListener('input',ciziM));
+$('#usec').onclick=e=>{uSadece=!uSadece;
+  e.target.textContent=uSadece?'Tümünü göster':'Sadece seçilenler';
+  e.target.classList.toggle('primary',uSadece);ciziU();};
+$('#mkap').onclick=e=>{sadeceKapsam=!sadeceKapsam;
+  e.target.classList.toggle('primary',sadeceKapsam);ciziM();};
+document.querySelectorAll('[data-p=urun] th[data-s]').forEach(th=>{
+  th.onclick=()=>{const k=th.dataset.s;uSort={k,d:uSort.k===k?-uSort.d:1};ciziU();};});
+document.querySelectorAll('[data-p=musteri] th[data-s]').forEach(th=>{
+  th.onclick=()=>{const k=th.dataset.s;mSort={k,d:mSort.k===k?-mSort.d:1};ciziM();};});
+
+/* ---------- ekleme ---------- */
+$('#uekle').onclick=()=>{
+  const ad=prompt('Parça adı:'); if(!ad) return;
+  const sk=prompt('Sektör — hadde / celik / cimento / maden / enerji:','hadde');
+  if(!SEK[sk]) return alert('Geçersiz sektör kodu.');
+  const mn=parseFloat(prompt('En düşük tonaj:','1'))||0, mx=parseFloat(prompt('En yüksek tonaj:','10'))||mn;
+  URUN.push({id:'U'+Date.now(),ad,sektor:sk,min:mn,max:mx,not:'',sec:true}); ciziU();
+};
+$('#mekle').onclick=()=>{
+  const ad=prompt('Firma adı:'); if(!ad) return;
+  const lat=parseFloat((prompt('Enlem (örn. 44.66):','')||'').replace(',','.'));
+  const lng=parseFloat((prompt('Boylam (örn. 20.93):','')||'').replace(',','.'));
+  if(isNaN(lat)||isNaN(lng)) return alert('Haritada görünmesi için enlem ve boylam gerekli.');
+  const konum=prompt('Şehir, ülke:','')||'';
+  const bolge=prompt('Bölge:','Yurt içi')||'Yurt içi';
+  const sk=(prompt('Sektörler (virgülle) — hadde,celik,cimento,maden,enerji:','hadde')||'')
+            .split(',').map(x=>x.trim()).filter(x=>SEK[x]);
+  const tip=(prompt('Tip — Tesis veya OEM:','Tesis')||'Tesis').trim();
+  MUS.push({id:'M'+Date.now(),ad,konum,bolge,sektor:sk.length?sk:['celik'],tip,lat,lng,not:'',dur:0});
+  if(![...$('#mbol').options].some(o=>o.value===bolge)){
+    const o=document.createElement('option');o.value=bolge;o.textContent=bolge;$('#mbol').append(o);}
+  ciz(); ciziM();
+};
+
+/* ---------- CSV ---------- */
+const alan=v=>`"${String(v).replace(/"/g,'""')}"`;
+function indir(ad,csv){const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download=ad;a.click();}
+$('#uexp').onclick=()=>indir('urun-yelpazesi.csv','parca;sektor;min_ton;max_ton;secili;not\n'+
+  urunler().map(u=>[u.ad,SEK[u.sektor].ad,u.min,u.max,u.sec?'EVET':'',u.not].map(alan).join(';')).join('\n'));
+$('#mexp').onclick=()=>indir('hedef-musteriler.csv','firma;konum;bolge;sektor;tip;mesafe_km;durum;not\n'+
+  musteriler().map(m=>[m.ad,m.konum,m.bolge,m.sektor.map(s=>SEK[s].ad).join(' / '),m.tip,
+    m.d2.toFixed(0),DUR[m.dur],m.not].map(alan).join(';')).join('\n'));
+
+ciz(); ciziU(); ciziM();
+</script>
