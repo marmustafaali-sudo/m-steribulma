@@ -136,6 +136,10 @@
   .chk{width:16px;height:16px;accent-color:var(--steel);cursor:pointer}
   .empty{padding:34px 20px;color:var(--muted);text-align:center;font-size:13px;line-height:1.6}
 
+  .frmark{border-radius:50%;border:2px solid;font-size:11px;text-align:center;
+          box-shadow:0 0 0 3px rgba(0,0,0,.35);cursor:pointer}
+  .frmark:hover{filter:brightness(1.4)}
+
   .fmark{border-radius:50%;background:rgba(127,227,192,.13);border:1.5px solid #7FE3C0;
          color:#7FE3C0;font-family:var(--mono);font-size:11px;text-align:center;
          box-shadow:0 0 0 3px rgba(127,227,192,.07)}
@@ -199,6 +203,8 @@
         <div class="chips" style="margin-top:8px">
           <button class="chip" id="fuartog" data-k="fuar" aria-pressed="true"
                   style="color:#7FE3C0;border-color:#7FE3C0">CastForge katılımcıları (585)</button>
+          <button class="chip" id="frtog" data-k="fr" aria-pressed="true"
+                  style="color:#4CAF7D;border-color:#4CAF7D">Fransa fırsatları (41)</button>
         </div>
       </div>
       <div class="block">
@@ -977,7 +983,14 @@ const SEV = {'cok-yuksek':{ad:'Çok yüksek',renk:'#4CAF7D'},'yuksek':{ad:'Yüks
   'dusuk-orta':{ad:'Düşük-orta',renk:'#8496A8'},'dusuk':{ad:'Düşük',renk:'#5C7A94'}};
 let FR = FR_HAM.map((r,i)=>({...r, id:'R'+i}));
 const frLayer = L.layerGroup().addTo(map);
-let rSort={k:'seviye',d:1};
+let rSort={k:'seviye',d:1}, frAcik = true;
+$('#frtog').onclick = e => {
+  frAcik = e.target.getAttribute('aria-pressed') !== 'true';
+  e.target.setAttribute('aria-pressed', String(frAcik));
+  e.target.style.color = frAcik ? '#4CAF7D' : '';
+  e.target.style.borderColor = frAcik ? '#4CAF7D' : '';
+  frCiz();
+};
 const SEVSIRA = ['cok-yuksek','yuksek','orta-yuksek','orta','dusuk-orta','dusuk'];
 
 function frler(){
@@ -988,19 +1001,27 @@ function frler(){
       if(a==='seviye') return (SEVSIRA.indexOf(x.seviye)-SEVSIRA.indexOf(y.seviye))*rSort.d;
       return String(x[a]).localeCompare(String(y[a]),'tr')*rSort.d;});
 }
+const frPins = {};
 function frCiz(){
   frLayer.clearLayers();
+  if(!frAcik) return;
   FR.forEach(f=>{
     if(f.lat==null) return;
-    const c=SEV[f.seviye].renk, r=f.seviye.includes('yuksek')?7:5;
-    L.circleMarker([f.lat,f.lng],{radius:r,color:c,weight:1.8,fillColor:c,
-      fillOpacity:f.kat==='celik'?.6:.25})
+    const c = SEV[f.seviye].renk;
+    const buyuk = f.seviye==='cok-yuksek' || f.seviye==='yuksek';
+    const ic = f.kat==='celik' ? '&#9679;' : '&#9670;';   // çelik: daire, çimento: eşkenar
+    const cap = buyuk ? 26 : 20;
+    L.marker([f.lat,f.lng],{icon:L.divIcon({className:'', iconSize:[cap,cap],
+        iconAnchor:[cap/2,cap/2],
+        html:`<div class="frmark" style="width:${cap}px;height:${cap}px;line-height:${cap-4}px;
+              border-color:${c};color:${c};background:${buyuk?c+'26':'rgba(11,15,20,.75)'}">${ic}</div>`})})
      .bindPopup(`<strong>${esc(f.ad)}</strong><br>
        <em>${esc(f.sehir)}</em><br>
-       <em>${f.kat==='celik'?'Cüruf potası fırsatı':'Çimento yedek parça fırsatı'} · ${SEV[f.seviye].ad} potansiyel</em>
+       <em>${f.kat==='celik'?'Cüruf potası fırsatı':'Çimento yedek parça fırsatı'} · <span style="color:${c}">${SEV[f.seviye].ad} potansiyel</span></em>
        <ul><li>${esc(f.profil.slice(0,220))}</li></ul>
        ${f.tel?`<em>${esc(f.tel)}</em><br>`:''}${f.mail?`<em>${esc(f.mail)}</em>`:''}`)
      .addTo(frLayer);
+    frPins[f.id] = frLayer.getLayers()[frLayer.getLayers().length-1];
   });
 }
 function ciziR(){
@@ -1025,6 +1046,7 @@ function ciziR(){
     tr.querySelector('.r1').onclick=()=>{
       document.querySelector('.tab[data-p=harita]').click();
       map.flyTo([f.lat,f.lng],9,{duration:.7});
+      setTimeout(()=>frPins[f.id] && frPins[f.id].openPopup(), 750);
     };
   });
 }
