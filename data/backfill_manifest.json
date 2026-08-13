@@ -59,6 +59,18 @@
       "bolge": "Ortadoğu / K. Afrika",
       "sektor": "cimento",
       "count": 11
+    },
+    {
+      "file": "libya_curuf.json",
+      "bolge": "Ortadoğu / K. Afrika",
+      "sektor": "celik",
+      "count": 2
+    },
+    {
+      "file": "libya_cimento.json",
+      "bolge": "Ortadoğu / K. Afrika",
+      "sektor": "cimento",
+      "count": 7
     }
   ],
   "cursor": {

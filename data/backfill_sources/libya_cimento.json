@@ -1,0 +1,72 @@
+[
+  {
+    "firma_adi": "Al-Ahlia Cement Company - Almergeb Tesisi",
+    "ulke": "Libya",
+    "sehir": "Al Khums (Almergeb)",
+    "web_sitesi": "https://ahcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Al-Khums'un batısında, kıyı yolu üzerinde (Trablus'a ~117 km) konumlu, 40 hektarlık alanda kurulu çimento fabrikası. Alman Polysius tarafından inşa edilen iki hatta sahip: 1. hat (100.000 ton/yıl, 1968'de devreye girmiş, sonradan devre dışı bırakılmış) ve 2. hat (300.000 ton/yıl, 1974'ten beri faal). 1982'de ciddi arıza sonrası 1993'te kapsamlı yenileme (hammadde binası, elektrik rafinerisi, örnekleme istasyonu, radyolojik analizör) görmüş. Al-Ahlia Cement Company (eski adıyla Arabian Cement Co./ACC) bünyesinde, ~240 ulusal + 3 yabancı çalışanı var.",
+    "degerlendirme": "Yüksek potansiyel - 1970'lerden beri faal, 1993'te büyük revizyon geçirmiş bir fırın hattı; ekipman yaşı fırın/değirmen aşınma parçası ihtiyacını artırır."
+  },
+  {
+    "firma_adi": "Al-Ahlia Cement Company - Souk Elkhamis Tesisi",
+    "ulke": "Libya",
+    "sehir": "Suq al-Khamis (İmsihel, Trablus'un ~57 km güneyi)",
+    "web_sitesi": "https://ahcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Trablus'un 57 km güneyinde, Suq al-Khamis/İmsihel bölgesinde konumlu kompleks; biri çimento (1 milyon ton/yıl OPC, Alman KHD tarafından 1974'te kurulup 1977'de üretime başlamış), biri kireç (toplam 200.000 ton/yıl, iki hat: KHD 1976 ve Alman BKMI 1989) olmak üzere iki ayrı üretim hattı içeriyor. ~450 ulusal + 50 yabancı çalışanı var.",
+    "degerlendirme": "Yüksek potansiyel - 1 milyon ton/yıl kapasiteli aktif entegre çimento hattı ve ayrıca ayrı bir kireç üretim hattı; iki farklı proses (çimento+kireç) yedek parça çeşitliliğini ve talebini artırır."
+  },
+  {
+    "firma_adi": "Al-Ahlia Cement Company - Lebda Tesisi",
+    "ulke": "Libya",
+    "sehir": "Al Khums (Lebda, ~27 km güneydoğu)",
+    "web_sitesi": "https://ahcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Al-Khums'a ~27 km, Suq al-Khamis/Al-Khums bölgesinde (kıyı yolundan ~7 km içeride) konumlu; Fransız FCB firması tarafından 1976'da inşasına başlanmış, 1981'de üretime geçmiş. İki hatla tasarım kapasitesi yıllık 1 milyon ton Portland çimentosu; 48 hektarlık alanda, ~380 ulusal + 50 yabancı çalışanı var.",
+    "degerlendirme": "Yüksek potansiyel - 40 yılı aşkın süredir faal, iki hatlı entegre bir tesis; uzun işletme ömrü fırın/değirmen bakım parçası talebini sürekli kılar."
+  },
+  {
+    "firma_adi": "Al-Ahlia Cement Company - Zliten Tesisi",
+    "ulke": "Libya",
+    "sehir": "Zliten",
+    "web_sitesi": "https://ahcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Zliten kent merkezinin ~12 km doğusunda, Trablus'a 157 km mesafede, 37 hektarlık alanda kurulu, Al-Ahlia grubunun en büyük tesisi. İki hatla toplam 2 milyon ton/yıl Portland çimentosu kapasitesi: 1. hat Japon Kawasaki tarafından 1980'de kurulmuş, 1984'te üretime başlamış; 2. hat Alman CEMAG tarafından 2003'te kurulmuş, 2019'da devreye girmiş (görece yeni). ~500 ulusal + 50 yabancı çalışanı var; 2020'de kısa bir üretim arasından sonra yeniden faaliyete geçmiştir.",
+    "degerlendirme": "Çok yüksek potansiyel - grubun en büyük kapasiteli (2 milyon ton/yıl) tesisi, hem eski (1984) hem yeni (2019) hat içeriyor; büyük hacimli ve sürekli üretim düzenli yedek parça talebi yaratır."
+  },
+  {
+    "firma_adi": "Libyan Cement Company - Bingazi Tesisi",
+    "ulke": "Libya",
+    "sehir": "Benghazi",
+    "web_sitesi": "https://lcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Libyan Cement Company'nin (LCC) Bingazi'deki orijinal/merkez tesisi; 2007 verilerine göre yıllık ~800.000 ton kapasiteli. 2023'te Alushibe Holding Group şirketin çoğunluk hissesini devralmış (yönetim kurulu başkanı Ahmed Gadalla), grup toplamda (Bingazi + Hawari + Al-Fataiah) ~3 milyon ton/yıl hedefine ulaşmayı planlıyor.",
+    "degerlendirme": "Yüksek potansiyel - yeni sahiplik altında kapasite artış hedefi olan bir grup merkezi; modernizasyon/genişleme süreçleri parça talebini artırabilir."
+  },
+  {
+    "firma_adi": "Libyan Cement Company - Hawari Tesisi",
+    "ulke": "Libya",
+    "sehir": "Benghazi (Hawari)",
+    "web_sitesi": "https://lcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "LCC grubuna bağlı, Bingazi'nin Hawari bölgesindeki tesis; yıllık ~1 milyon ton kapasiteli, 1987'de sülfata dayanıklı çimento üretimine yönelik modifikasyon geçirmiştir.",
+    "degerlendirme": "Yüksek potansiyel - 1 milyon ton/yıl kapasiteli aktif hat; özel çimento tipi (sülfata dayanıklı) üretimi ek proses/ekipman çeşitliliği anlamına gelir."
+  },
+  {
+    "firma_adi": "Libyan Cement Company - Al-Fataiah Tesisi",
+    "ulke": "Libya",
+    "sehir": "Darnah (El Fataiah, Bingazi'nin ~350 km doğusu)",
+    "web_sitesi": "https://lcc.ly",
+    "telefon": "",
+    "eposta": "",
+    "profil": "LCC grubuna bağlı, Bingazi'nin ~350 km doğusunda, Derne'ye yakın konumlu tesis; yıllık ~1 milyon ton kapasiteli. Grubun üç tesisinden biri olarak 2023 sonrası Alushibe Holding'in kapasite artış planına dahil.",
+    "degerlendirme": "Orta-yüksek potansiyel - 1 milyon ton/yıl kapasiteli aktif hat; Bingazi'ye görece uzaklığı lojistik koordinasyonu karmaşıklaştırabilir ama grup genelinde tek temas noktası (LCC merkez) üzerinden ilerlenebilir."
+  }
+]

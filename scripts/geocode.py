@@ -30,6 +30,7 @@ COUNTRY_NAME_TO_ISO2 = {
     "slovenya": "SI", "yunanistan": "GR", "kosova": "XK", "arnavutluk": "AL",
     "kuzey makedonya": "MK",
     "cezayir": "DZ", "fas": "MA", "mısır": "EG", "misir": "EG",
+    "libya": "LY",
     "ürdün": "JO", "urdun": "JO", "ırak": "IQ", "irak": "IQ",
     "suudi arabistan": "SA", "s. arabistan": "SA", "bae": "AE",
     "gürcistan": "GE", "gurcistan": "GE", "azerbaycan": "AZ",
