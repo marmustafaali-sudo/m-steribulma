@@ -723,5 +723,122 @@
     "lng": 2.349,
     "not": "Orta potansiyel - yüksek katma değerli ama nispeten küçük hacimli özel çelik/süper alaşım üretimi yapan EAF tesisi. (harita konumu yaklaşık - küçük yerleşim için il/eyalet merkezine sabitlendi)",
     "iletisim": "04 73 67 30 00 · www.aubertduval.com"
+  },
+  {
+    "ad": "Libyan Iron and Steel Company (LISCO)",
+    "konum": "Misratah, Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 32.375,
+    "lng": 15.093,
+    "not": "Çok yüksek potansiyel - Libya'nın tek büyük ölçekli EAF/DRI çelik üreticisi; sürekli çalışan ark ocağı hattı düzenli ve tekrarlayan cüruf potası ihtiyacı doğurur. Satın alma müdürlüğüne doğrudan telefon/e-posta ile ulaşılabiliyor.",
+    "iletisim": "+218 51 2613794 · purchasing@libyansteel.com · libyansteel.com"
+  },
+  {
+    "ad": "Tosyalı Sulb Steel Industries (Tosyalı-SULB Bingazi Tesisi)",
+    "konum": "Benghazi, Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 32.115,
+    "lng": 20.069,
+    "not": "Çok yüksek potansiyel - Tosyalı Holding zaten döküm/dövme tedarik zincirine aşina, Türkiye ve Cezayir'deki EAF tesisleriyle bilinen bir grup; Bingazi'deki yeni ve çok büyük ölçekli DRI-EAF yatırımı devreye girdikçe önemli ve tekrarlayan bir cüruf potası talebi oluşturması beklenir. İlk temas için Tosyalı Holding'in Türkiye merkez ofisi üzerinden ilerlemek daha güvenilir olabilir, zira tesise özel iletişim bilgisi henüz yayınlanmamış.",
+    "iletisim": "www.tosyalisulb.com.ly"
+  },
+  {
+    "ad": "Al-Ahlia Cement Company - Almergeb Tesisi",
+    "konum": "Al Khums (Almergeb), Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.649,
+    "lng": 14.262,
+    "not": "Yüksek potansiyel - 1970'lerden beri faal, 1993'te büyük revizyon geçirmiş bir fırın hattı; ekipman yaşı fırın/değirmen aşınma parçası ihtiyacını artırır.",
+    "iletisim": "ahcc.ly"
+  },
+  {
+    "ad": "Al-Ahlia Cement Company - Souk Elkhamis Tesisi",
+    "konum": "Suq al-Khamis (İmsihel, Trablus'un ~57 km güneyi), Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.887,
+    "lng": 13.187,
+    "not": "Yüksek potansiyel - 1 milyon ton/yıl kapasiteli aktif entegre çimento hattı ve ayrıca ayrı bir kireç üretim hattı; iki farklı proses (çimento+kireç) yedek parça çeşitliliğini ve talebini artırır. (harita konumu yaklaşık - küçük yerleşim için il/eyalet merkezine sabitlendi)",
+    "iletisim": "ahcc.ly"
+  },
+  {
+    "ad": "Al-Ahlia Cement Company - Lebda Tesisi",
+    "konum": "Al Khums (Lebda, ~27 km güneydoğu), Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.649,
+    "lng": 14.262,
+    "not": "Yüksek potansiyel - 40 yılı aşkın süredir faal, iki hatlı entegre bir tesis; uzun işletme ömrü fırın/değirmen bakım parçası talebini sürekli kılar.",
+    "iletisim": "ahcc.ly"
+  },
+  {
+    "ad": "Al-Ahlia Cement Company - Zliten Tesisi",
+    "konum": "Zliten, Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.467,
+    "lng": 14.569,
+    "not": "Çok yüksek potansiyel - grubun en büyük kapasiteli (2 milyon ton/yıl) tesisi, hem eski (1984) hem yeni (2019) hat içeriyor; büyük hacimli ve sürekli üretim düzenli yedek parça talebi yaratır.",
+    "iletisim": "ahcc.ly"
+  },
+  {
+    "ad": "Libyan Cement Company - Bingazi Tesisi",
+    "konum": "Benghazi, Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.115,
+    "lng": 20.069,
+    "not": "Yüksek potansiyel - yeni sahiplik altında kapasite artış hedefi olan bir grup merkezi; modernizasyon/genişleme süreçleri parça talebini artırabilir.",
+    "iletisim": "lcc.ly"
+  },
+  {
+    "ad": "Libyan Cement Company - Hawari Tesisi",
+    "konum": "Benghazi (Hawari), Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.115,
+    "lng": 20.069,
+    "not": "Yüksek potansiyel - 1 milyon ton/yıl kapasiteli aktif hat; özel çimento tipi (sülfata dayanıklı) üretimi ek proses/ekipman çeşitliliği anlamına gelir.",
+    "iletisim": "lcc.ly"
+  },
+  {
+    "ad": "Libyan Cement Company - Al-Fataiah Tesisi",
+    "konum": "Darnah (El Fataiah, Bingazi'nin ~350 km doğusu), Libya",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.767,
+    "lng": 22.637,
+    "not": "Orta-yüksek potansiyel - 1 milyon ton/yıl kapasiteli aktif hat; Bingazi'ye görece uzaklığı lojistik koordinasyonu karmaşıklaştırabilir ama grup genelinde tek temas noktası (LCC merkez) üzerinden ilerlenebilir.",
+    "iletisim": "lcc.ly"
   }
 ]
