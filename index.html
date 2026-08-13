@@ -84,6 +84,20 @@
         border:3px solid var(--steel);box-shadow:0 0 0 4px rgba(242,160,7,.14)}
   input[type=range]:focus-visible{outline:2px solid var(--steel);outline-offset:4px}
 
+  #girisalan{display:flex;align-items:center;gap:8px}
+  #girisform{display:flex;gap:6px}
+  #girisform input{background:var(--panel2);border:1px solid var(--line);color:var(--ink);
+        border-radius:3px;padding:6px 9px;font-family:var(--mono);font-size:12.5px;width:130px}
+  #girisform button{padding:6px 11px}
+  #girisdurum{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+  #cikis{padding:6px 11px;display:none}
+  body.uye #girisform{display:none}
+  body.uye #cikis{display:inline-block}
+  body.misafir .gizli, body:not(.uye) .tab[data-p]:not([data-p=harita]){display:none}
+  #kilit{padding:34px 22px;color:var(--muted);font-size:13px;line-height:1.7;text-align:center}
+  #kilit b{color:var(--steel);display:block;font-family:var(--cond);letter-spacing:.08em;
+           text-transform:uppercase;font-size:15px;margin-bottom:6px}
+
   .row{display:flex;gap:8px}
   .spacer{margin-left:auto}
   .count{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
@@ -193,6 +207,14 @@
     <button class="tab" role="tab" aria-selected="false" data-p="fuar">Rakipler <b>585</b></button>
     <button class="tab" role="tab" aria-selected="false" data-p="fr">Satış fırsatları <b>215</b></button>
   </div>
+  <div id="girisalan">
+    <form id="girisform" autocomplete="off">
+      <input type="password" id="sifre" placeholder="Parola" autocomplete="current-password">
+      <button type="submit">Giriş</button>
+    </form>
+    <span id="girisdurum"></span>
+    <button id="cikis">Çıkış</button>
+  </div>
 </header>
 
 <main>
@@ -214,7 +236,7 @@
         <label class="k" for="r">Kapsama çapı <span id="rval">3000 km</span></label>
         <input type="range" id="r" min="100" max="6000" step="100" value="3000">
       </div>
-      <div class="block">
+      <div class="block gizli">
         <label class="k">Sektör</label>
         <div class="chips" id="mapchips"></div>
         <div class="chips" style="margin-top:8px">
@@ -223,7 +245,7 @@
                   style="color:#4CAF7D;border-color:#4CAF7D">Satış fırsatları (215)</button>
         </div>
       </div>
-      <div class="block">
+      <div class="block gizli">
         <label class="k" for="tip">Otomatik tesis arama</label>
         <select id="tip" style="width:100%">
           <option value="cimento">Çimento fabrikaları</option>
@@ -239,7 +261,7 @@
         <p id="buldurum" style="margin:8px 0 0;color:var(--muted);font-size:11.5px;
            font-family:var(--mono);line-height:1.5">Arama, sürgüyle seçtiğin çap içinde yapılır (en fazla 400 km).</p>
       </div>
-      <div class="block" id="readout">Merkez: Karabük (Kardökmak)</div>
+      <div class="block gizli" id="readout">Merkez: Karabük (Kardökmak)</div>
       <div id="list"></div>
     </aside>
     <div id="map">
@@ -381,6 +403,19 @@
   Değişiklikler tarayıcı belleğinde tutulur — kapatmadan önce <b>CSV indir</b> ile dışa aktar.
   Koordinatlar ve müşteri listesi yaklaşıktır; doğrulanmış satış istihbaratı değildir.
 </footer>
+
+<script>
+/* ---------- ERİŞİM ----------
+   Parolayı değiştirmek için yeni parolanın SHA-256 özetini PAROLA_OZET'e yaz.
+   Not: statik sayfada bu caydırıcıdır, gerçek güvenlik için Cloudflare Access kullan. */
+const PAROLA_OZET = '3bdc9124d8a8c64c132f57a9fc52e5296f6c43fca540400d7f90110c224a5f99';
+const ANAHTAR = 'kdm_giris';
+async function sifreOzet(s){
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+
+</script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -544,7 +579,20 @@ document.querySelectorAll('.tab').forEach(t=>{
 });
 
 /* ---------- harita ---------- */
-const map = L.map('map').setView([44,25],4);
+let yetkili = false;
+document.body.classList.add('misafir');
+
+function yetkiUygula(){
+  document.body.classList.toggle('uye', yetkili);
+  document.body.classList.toggle('misafir', !yetkili);
+  $('#girisdurum').textContent = yetkili ? 'Giriş yapıldı' : 'Firma verileri için giriş yap';
+  ciz(); ciziM(); if(window.ciziF) ciziF();
+  if(window.frCiz){ window.frCiz=frCiz; window.ciziR=ciziR; frCiz(); ciziR(); }
+  if(window.fuarCiz) fuarCiz();
+  if(!yetkili) document.querySelector('.tab[data-p=harita]').click();
+}
+
+const map = window.__map = L.map('map').setView([44,25],4);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
   {maxZoom:19, attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
 const ringLayer=L.layerGroup().addTo(map), siteLayer=L.layerGroup().addTo(map);
@@ -586,7 +634,7 @@ function ciz(){
       .on('drag dragend',e=>{center=e.target.getLatLng();ciz();ciziM();});
 
   const mx=maxCap();
-  MUS.forEach(m=>{
+  if(yetkili) MUS.forEach(m=>{
     if(!m.sektor.some(s=>aktif.has(s))) return;
     const d=haversine(center,m); if(d>mx) return;
     const renk=SEK[m.sektor[0]].renk;
@@ -607,6 +655,11 @@ function ciz(){
     `KAPSAM <b>${isFinite(mx)?mx+' km':'sınırsız'}</b> · FİRMA <b>${rows.length}</b><br>`+
     `Tesis <b>${rows.filter(r=>r.tip==='Tesis').length}</b> · OEM <b>${rows.filter(r=>r.tip==='OEM').length}</b>`;
 
+  if(!yetkili){
+    $('#list').innerHTML = '<div id="kilit"><b>Kilitli</b>'+
+      'Hedef müşteriler, rakip haritası ve satış fırsatları için üst bardan giriş yap.</div>';
+    return;
+  }
   $('#list').innerHTML = rows.length ? rows.map(m=>`
     <div class="item" data-id="${m.id}">
       <svg class="compass" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.2"/>
@@ -1041,7 +1094,7 @@ function ciziF(){
 
 function fuarCiz(){
   fuarLayer.clearLayers();
-  if(!fuarAcik) return;
+  if(!fuarAcik || !yetkili) return;
   const grup = {};
   FUAR.forEach(f=>{
     if(f.lat==null) return;
@@ -1086,7 +1139,7 @@ $('#ffile').onchange=e=>{
       if(isNaN(lat)||isNaN(lng)) return;
       const f=FUAR.find(x=>x.ad===c[0]); if(f){f.lat=lat;f.lng=lng;n++;}
     });
-    fuarCiz(); ciziF();
+    window.fuarCiz=fuarCiz; fuarCiz(); ciziF();
 
 
 
@@ -1135,7 +1188,7 @@ function frler(){
 const frPins = {};
 function frCiz(){
   frLayer.clearLayers();
-  if(!frAcik) return;
+  if(!frAcik || !yetkili) return;
   FR.forEach(f=>{
     if(f.lat==null) return;
     const c = SEV[f.seviye].renk;
@@ -1199,6 +1252,27 @@ $('#rexp').onclick=()=>indir('fransa-firsatlari.csv',
   'tesis;bolge;ulke;sehir;firsat;potansiyel;profil;telefon;eposta;web;enlem;boylam\n'+
   frler().map(f=>[f.ad,f.bolge,f.ulke,f.sehir,f.kat==='celik'?'Cüruf potası':'Çimento parça',
     SEV[f.seviye].ad,f.profil,f.tel,f.mail,f.web,f.lat,f.lng].map(alan).join(';')).join('\n'));
-ulkeDoldur(); frCiz(); ciziR();
+ulkeDoldur(); window.frCiz=frCiz; window.ciziR=ciziR; frCiz(); ciziR();
+
+/* ---------- giriş / çıkış ---------- */
+$('#girisform').addEventListener('submit', async ev=>{
+  ev.preventDefault();
+  const s=$('#sifre'), d=$('#girisdurum');
+  d.textContent='...';
+  try{
+    if(await sifreOzet(s.value) === PAROLA_OZET){
+      yetkili=true; s.value='';
+      try{ sessionStorage.setItem(ANAHTAR,'1'); }catch(e){}
+      yetkiUygula();
+    } else { d.textContent='Parola hatalı'; d.style.color='var(--cast)'; s.value=''; }
+  }catch(e){ d.textContent='Hata: '+e.message; }
+});
+$('#cikis').onclick = ()=>{
+  yetkili=false;
+  try{ sessionStorage.removeItem(ANAHTAR); }catch(e){}
+  $('#girisdurum').style.color=''; yetkiUygula();
+};
+try{ if(sessionStorage.getItem(ANAHTAR)==='1') yetkili=true; }catch(e){}
+yetkiUygula();
 
 </script>
