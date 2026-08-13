@@ -1,0 +1,212 @@
+[
+  {
+    "firma_adi": "U.S. Steel - Gary Works",
+    "eyalet": "Indiana",
+    "sehir": "Gary",
+    "web_sitesi": "https://www.ussteel.com/about-us/locations",
+    "telefon": "(219) 888-2000",
+    "eposta": "",
+    "profil": "Entegre BF-BOF tesisi. ABD'nin en büyük tek entegre çelik fabrikalarından biri; yıllık ~7,5 milyon net ton ham çelik kapasitesi.",
+    "degerlendirme": "Yüksek potansiyel - çok büyük entegre BF-BOF operasyonu, sürekli/yüksek hacimli cüruf üretimi."
+  },
+  {
+    "firma_adi": "Cleveland-Cliffs - Burns Harbor",
+    "eyalet": "Indiana",
+    "sehir": "Portage / Burns Harbor",
+    "web_sitesi": "https://www.clevelandcliffs.com/operations/steelmaking/burns-harbor",
+    "telefon": "(216) 694-5700",
+    "eposta": "info@clevelandcliffs.com",
+    "profil": "Entegre BF-BOF, 2 yüksek fırın, yıllık ~5 milyon net ton kapasite.",
+    "degerlendirme": "Yüksek potansiyel - aktif, tam kapasiteye yakın büyük entegre tesis, sürekli cüruf potası ihtiyacı."
+  },
+  {
+    "firma_adi": "Cleveland-Cliffs - Indiana Harbor",
+    "eyalet": "Indiana",
+    "sehir": "East Chicago",
+    "web_sitesi": "https://www.clevelandcliffs.com/operations/steelmaking",
+    "telefon": "(216) 694-5700",
+    "eposta": "info@clevelandcliffs.com",
+    "profil": "Entegre BF-BOF-EAF karma tesis. 3 yüksek fırın (1 aktif), 4 BOF (~6,8M ton/yıl), 1 EAF beklemede.",
+    "degerlendirme": "Yüksek potansiyel - aktif BOF hattı ve yüksek fırın, ABD'nin en büyük entegre tesislerinden biri."
+  },
+  {
+    "firma_adi": "Cleveland-Cliffs - Cleveland Works",
+    "eyalet": "Ohio",
+    "sehir": "Cleveland",
+    "web_sitesi": "https://www.clevelandcliffs.com/operations/steelmaking/cleveland",
+    "telefon": "(216) 694-5700",
+    "eposta": "info@clevelandcliffs.com",
+    "profil": "Entegre tesis, 2 yüksek fırın + BOF hattı, 84 inç sıcak şerit haddehanesi. Kapasite kullanımı dönemsel dalgalanabiliyor.",
+    "degerlendirme": "Yüksek potansiyel - entegre BOF operasyonu devam ediyor, düzenli cüruf potası tüketicisi."
+  },
+  {
+    "firma_adi": "Cleveland-Cliffs - Middletown Works",
+    "eyalet": "Ohio",
+    "sehir": "Middletown",
+    "web_sitesi": "https://www.clevelandcliffs.com/operations/steelmaking/middletown-works",
+    "telefon": "(216) 694-5700",
+    "eposta": "info@clevelandcliffs.com",
+    "profil": "Entegre tesis (eski AK Steel), kok fırınları+yüksek fırın+BOF. Kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif entegre BF-BOF tesisi, düzenli cüruf üretimi."
+  },
+  {
+    "firma_adi": "U.S. Steel - Mon Valley Works (Edgar Thomson)",
+    "eyalet": "Pennsylvania",
+    "sehir": "Braddock",
+    "web_sitesi": "https://monvalley.uss.com/mon-valley-works",
+    "telefon": "(412) 273-7000",
+    "eposta": "",
+    "profil": "Entegre BF-BOF, yıllık ~2,9 milyon net ton kapasite.",
+    "degerlendirme": "Yüksek potansiyel - aktif entegre BF-BOF, bölgedeki tek aktif entegre tesis."
+  },
+  {
+    "firma_adi": "U.S. Steel - Granite City Works",
+    "eyalet": "Illinois",
+    "sehir": "Granite City",
+    "web_sitesi": "https://www.ussteel.com/about-us/locations",
+    "telefon": "(618) 451-3456",
+    "eposta": "",
+    "profil": "Entegre BF-BOF, 2 yüksek fırın (1 aktif), Kasım 2023'te beklemeye alındı, Mart 2026'da yeniden başlatıldı. Aktif kapasite ~1,35M ton/yıl.",
+    "degerlendirme": "Orta-Yüksek potansiyel - yeni yeniden faaliyete geçmiş tesis, eskiyen pota parkının yenilenmesi fırsatı olabilir."
+  },
+  {
+    "firma_adi": "Steel Dynamics Inc. - Butler (Flat Roll)",
+    "eyalet": "Indiana",
+    "sehir": "Butler",
+    "web_sitesi": "https://butler.steeldynamics.com/",
+    "telefon": "(260) 868-8000",
+    "eposta": "",
+    "profil": "EAF düz haddelenmiş çelik tesisi, yıllık ~3 milyon ton kapasite.",
+    "degerlendirme": "Yüksek potansiyel - büyük ölçekli aktif modern EAF, çoklu tesis potansiyeli."
+  },
+  {
+    "firma_adi": "Nucor Steel Indiana (Crawfordsville)",
+    "eyalet": "Indiana",
+    "sehir": "Crawfordsville",
+    "web_sitesi": "https://nucor.com/locations/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF, 2 ark ocağı (118 ton), toplam ~2,3 milyon ton/yıl.",
+    "degerlendirme": "Yüksek potansiyel - iki aktif EAF, önemli cüruf hacmi; Nucor'un çoklu tesis fırsatı."
+  },
+  {
+    "firma_adi": "North Star BlueScope Steel",
+    "eyalet": "Ohio",
+    "sehir": "Delta",
+    "web_sitesi": "https://nsbsl.com/",
+    "telefon": "(419) 822-2200",
+    "eposta": "",
+    "profil": "EAF (BlueScope/Cargill ortak girişimi), sıcak haddelenmiş çelik levha. Ayrı satın alma iletişim formu mevcut.",
+    "degerlendirme": "Yüksek potansiyel - aktif EAF, özel satın alma kanalı B2B girişimini kolaylaştırabilir."
+  },
+  {
+    "firma_adi": "Metallus (eski TimkenSteel) - Faircrest Melt Shop",
+    "eyalet": "Ohio",
+    "sehir": "Canton",
+    "web_sitesi": "https://www.timkensteel.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF, 1 ark ocağı, ~1,09 milyon ton/yıl, %100 hurda. Özel çelik (SBQ) üretimi.",
+    "degerlendirme": "Orta-Yüksek potansiyel - aktif orta-büyük ölçekli EAF, özel çelik üreticisi."
+  },
+  {
+    "firma_adi": "Cleveland-Cliffs - Butler Works",
+    "eyalet": "Pennsylvania",
+    "sehir": "Butler",
+    "web_sitesi": "https://www.clevelandcliffs.com/operations/steelmaking/butler-works",
+    "telefon": "(216) 694-5700",
+    "eposta": "info@clevelandcliffs.com",
+    "profil": "EAF+AOD, 1 adet 230 tonluk ark ocağı. Elektrikli çelik/paslanmaz çelik.",
+    "degerlendirme": "Orta-Yüksek potansiyel - tek ama büyük (230 ton) EAF."
+  },
+  {
+    "firma_adi": "U.S. Steel - Fairfield Works",
+    "eyalet": "Alabama",
+    "sehir": "Fairfield",
+    "web_sitesi": "https://www.ussteel.com/about-us/locations",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Eski entegre, 2020'de tek EAF ile yeniden açıldı. Nominal kapasite ~1,6 milyon ton/yıl. Nippon Steel çatısı altında.",
+    "degerlendirme": "Orta-Yüksek potansiyel - orta-büyük ölçekli tek EAF."
+  },
+  {
+    "firma_adi": "Nucor-Yamato Steel Company",
+    "eyalet": "Arkansas",
+    "sehir": "Blytheville",
+    "web_sitesi": "https://nucoryamato.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF, 2 ark ocağı, toplam nominal ~3,17 milyon ton/yıl. ABD'nin en büyük yapısal çelik üreticilerinden biri.",
+    "degerlendirme": "Yüksek potansiyel - büyük tonajlı ağır yapısal çelik, çift ark ocaklı dev tesis, yüksek cüruf hacmi."
+  },
+  {
+    "firma_adi": "U.S. Steel - Big River Steel Works",
+    "eyalet": "Arkansas",
+    "sehir": "Osceola",
+    "web_sitesi": "https://www.ussteel.com/about-us/bigriversteel/overview",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF 'flex mill', 4 ark ocağı, toplam nominal ~6 milyon ton/yıl (2025 genişleme sonrası). DRI tesisi de var.",
+    "degerlendirme": "Yüksek potansiyel - bölgedeki en büyük EAF kompleksi, 4 ark ocağı ile çok yüksek cüruf hacmi."
+  },
+  {
+    "firma_adi": "Steel Dynamics Inc. - SDI Columbus",
+    "eyalet": "Mississippi",
+    "sehir": "Columbus",
+    "web_sitesi": "https://columbus.steeldynamics.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF yassı çelik, 2 ark ocağı, toplam nominal ~3,4 milyon ton/yıl.",
+    "degerlendirme": "Yüksek potansiyel - büyük ölçekli çift ark ocaklı yassı çelik üreticisi, yüksek kapasite kullanımı."
+  },
+  {
+    "firma_adi": "Nucor Steel Decatur LLC",
+    "eyalet": "Alabama",
+    "sehir": "Trinity (Decatur)",
+    "web_sitesi": "https://nucor.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF yassı çelik, 2 ark ocağı (165 ton), toplam nominal ~3,1 milyon ton/yıl.",
+    "degerlendirme": "Yüksek potansiyel - büyük ölçekli çift ark ocaklı Nucor tesisi, yüksek kapasite kullanımı."
+  },
+  {
+    "firma_adi": "Nucor Steel Gallatin LLC",
+    "eyalet": "Kentucky",
+    "sehir": "Ghent",
+    "web_sitesi": "https://nucor.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF yassı çelik, 2 ark ocağı, toplam nominal ~2,72 milyon ton/yıl (2022 genişleme sonrası).",
+    "degerlendirme": "Yüksek potansiyel - büyük ölçekli, yakın zamanda genişletilmiş çift ark ocaklı tesis."
+  },
+  {
+    "firma_adi": "Nucor Steel Berkeley",
+    "eyalet": "South Carolina",
+    "sehir": "Huger",
+    "web_sitesi": "https://nucor.com/products/beam/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF yassı çelik+profil, 2 ark ocağı (154 ton), toplam nominal ~3,44 milyon ton/yıl.",
+    "degerlendirme": "Yüksek potansiyel - bölgedeki en büyük EAF komplekslerinden biri, devam eden genişleme yatırımları."
+  },
+  {
+    "firma_adi": "AM/NS Calvert LLC (ArcelorMittal)",
+    "eyalet": "Alabama",
+    "sehir": "Calvert",
+    "web_sitesi": "https://northamerica.arcelormittal.com/operations/arcelormittal-calvert",
+    "telefon": "",
+    "eposta": "",
+    "profil": "2025 ortasında devreye alınan YENİ EAF hattı ile entegre üreticiye dönüştü. Toplam yassı çelik kapasitesi ~5,3 milyon ton/yıl.",
+    "degerlendirme": "Yüksek potansiyel - bölgedeki en yeni büyük EAF yatırımı, orta vadede yenileme/ek tedarik ihtiyacı doğabilir."
+  },
+  {
+    "firma_adi": "Orion Steel Group - Pueblo Mill (eski EVRAZ Rocky Mountain Steel)",
+    "eyalet": "Colorado",
+    "sehir": "Pueblo",
+    "web_sitesi": "https://www.rockymountainsteelmills.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF, 1 ark ocağı (127 ton), nominal ~1,1 milyon ton/yıl. Temmuz 2025'te Atlas Holdings'e geçti (Orion Steel Group).",
+    "degerlendirme": "Orta-Yüksek potansiyel - orta-büyük ölçekli uzun geçmişli üretici, yeni sahiplik fırsat yaratabilir."
+  }
+]

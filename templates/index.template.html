@@ -470,75 +470,10 @@ let URUN = [
 ].map((r,i)=>({id:'U'+i, ad:r[0], sektor:r[1], min:r[2], max:r[3], not:r[4], sec:false}));
 
 /* --- HEDEF MÜŞTERİLER --- [ad, konum, bölge, sektörler, tip, lat, lng, not] */
-let MUS = [
-  ['Kardemir','Karabük','Yurt içi',['celik','hadde'],'Tesis',41.2,32.63,'Ana hissedar. Hadde standı ve pota işleri doğal akış.'],
-  ['Erdemir','Kdz. Ereğli','Yurt içi',['celik','hadde'],'Tesis',41.282,31.42,'Yassı hat, sürekli stand ve chock yenileme.'],
-  ['İsdemir','İskenderun','Yurt içi',['celik','hadde'],'Tesis',36.66,36.16,'Yüksek fırın reline takvimi izlenmeli.'],
-  ['İçdaş','Biga, Çanakkale','Yurt içi',['celik','hadde'],'Tesis',40.36,26.98,''],
-  ['Habaş','Aliağa, İzmir','Yurt içi',['celik','hadde'],'Tesis',38.79,26.94,'EAF, cüruf potası tüketimi yüksek.'],
-  ['Çolakoğlu Metalurji','Dilovası','Yurt içi',['celik','hadde'],'Tesis',40.78,29.53,''],
-  ['Tosyalı Holding','Osmaniye','Yurt içi',['celik','hadde'],'Tesis',37.07,36.2,'Cezayir yatırımı üzerinden ihracata köprü.'],
-  ['Oyak Çimento','Ankara','Yurt içi',['cimento'],'Tesis',39.925,32.866,'Çok tesisli grup, tek temas noktası.'],
-  ['Limak Çimento','Ankara','Yurt içi',['cimento'],'Tesis',39.9,32.85,''],
-  ['Çimsa','Mersin','Yurt içi',['cimento'],'Tesis',36.8,34.64,''],
-  ['Eti Bakır','Ankara','Yurt içi',['maden'],'Tesis',39.93,32.85,'Kırıcı ve değirmen parçaları.'],
-  ['Eti Alüminyum','Seydişehir, Konya','Yurt içi',['maden','enerji'],'Tesis',37.42,31.85,''],
-  ['Soma / Tunçbilek İşletmeleri','Manisa-Kütahya','Yurt içi',['maden'],'Tesis',39.18,27.61,'Dragline ve konveyör parçaları.'],
-  ['HBIS Serbia','Smederevo, Sırbistan','Balkanlar',['celik','hadde'],'Tesis',44.66,20.93,'Entegre tesis, yüksek fırın. Karayolu erişimi iyi.'],
-  ['Liberty Galati','Galati, Romanya','Balkanlar',['celik','hadde'],'Tesis',45.43,28.03,'Entegre, sürekli yedek parça ihtiyacı.'],
-  ['ArcelorMittal Zenica','Zenica, Bosna','Balkanlar',['celik'],'Tesis',44.2,17.91,''],
-  ['Stomana Industry','Pernik, Bulgaristan','Balkanlar',['celik','hadde'],'Tesis',42.6,23.03,'EAF + haddehane.'],
-  ['Aurubis Bulgaria','Pirdop, Bulgaristan','Balkanlar',['maden'],'Tesis',42.7,24.15,'Bulgaristan şubesi üzerinden erişim kolay.'],
-  ['KCM','Plovdiv, Bulgaristan','Balkanlar',['maden'],'Tesis',42.13,24.74,''],
-  ['Ellatzite-Med','Etropole, Bulgaristan','Balkanlar',['maden'],'Tesis',42.83,24.0,'Bakır madeni, kırıcı ve değirmen.'],
-  ['Asarel-Medet','Panagyurishte, Bulgaristan','Balkanlar',['maden'],'Tesis',42.5,24.18,''],
-  ['Devnya Cement','Devnya, Bulgaristan','Balkanlar',['cimento'],'Tesis',43.23,27.56,''],
-  ['Zlatna Panega Cement','Lovech, Bulgaristan','Balkanlar',['cimento'],'Tesis',43.1,24.15,''],
-  ['Zijin Bor','Bor, Sırbistan','Balkanlar',['maden'],'Tesis',44.07,22.1,'Bakır kompleksi, genişleme yatırımı.'],
-  ['Hellas Gold','Halkidiki, Yunanistan','Balkanlar',['maden'],'Tesis',40.5,23.7,''],
-  ['Ezz Steel','Kahire, Mısır','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',30.05,31.24,'Bölgenin en büyük hacmi.'],
-  ['Suez Steel','Süveyş, Mısır','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',29.97,32.55,''],
-  ['Suez Cement','Kahire, Mısır','Ortadoğu / K. Afrika',['cimento'],'Tesis',30.03,31.23,''],
-  ['Arabian Cement','Kahire, Mısır','Ortadoğu / K. Afrika',['cimento'],'Tesis',29.98,31.3,''],
-  ['GICA','Cezayir','Ortadoğu / K. Afrika',['cimento'],'Tesis',36.75,3.06,'Devlet çimento grubu, çok hatlı.'],
-  ['Tosyalı Algérie','Oran, Cezayir','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',35.7,-0.63,'Türk sermayesi — giriş kolaylığı.'],
-  ['Bellara Steel (AQS)','Jijel, Cezayir','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',36.72,5.9,''],
-  ['OCP Group','Khouribga, Fas','Ortadoğu / K. Afrika',['maden'],'Tesis',32.88,-6.91,'Fosfat. Devasa öğütme/kırma parkı.'],
-  ['LafargeHolcim Maroc','Casablanca, Fas','Ortadoğu / K. Afrika',['cimento'],'Tesis',33.57,-7.59,''],
-  ['JPMC','Amman, Ürdün','Ortadoğu / K. Afrika',['maden'],'Tesis',31.95,35.93,'Fosfat.'],
-  ['Karbala / Bazian Cement','Irak','Ortadoğu / K. Afrika',['cimento'],'Tesis',32.61,44.02,'Yeniden devreye alınan hatlar.'],
-  ['Hadeed (Sabic)','Cubail, S. Arabistan','Ortadoğu / K. Afrika',['celik','hadde'],'Tesis',27.0,49.66,'Girişi zor, tek seferlik büyük iş.'],
-  ['EGA','Dubai, BAE','Ortadoğu / K. Afrika',['maden','enerji'],'Tesis',24.9,55.0,''],
-  ['Danieli','Buttrio, İtalya','Avrupa OEM',['hadde','celik'],'OEM',46.0,13.34,'Haddehane tasarımcısı. Türkiye projeleri çok, denetime gelmesi kolay.'],
-  ['SMS group','Düsseldorf, Almanya','Avrupa OEM',['hadde','celik'],'OEM',51.23,6.78,'Ağır döküm gövdeyi fason döktürür. En değerli hedef.'],
-  ['Primetals Technologies','Linz, Avusturya','Avrupa OEM',['hadde','celik'],'OEM',48.3,14.29,''],
-  ['Tenova','Castellanza, İtalya','Avrupa OEM',['celik','hadde'],'OEM',45.61,8.9,''],
-  ['FLSmidth','Kopenhag, Danimarka','Avrupa OEM',['cimento','maden'],'OEM',55.68,12.57,'Kendi ağır dökümhanesi yok.'],
-  ['thyssenkrupp Polysius','Beckum, Almanya','Avrupa OEM',['cimento','maden'],'OEM',51.76,8.04,''],
-  ['KHD Humboldt Wedag','Köln, Almanya','Avrupa OEM',['cimento'],'OEM',50.94,6.96,''],
-  ['Loesche','Düsseldorf, Almanya','Avrupa OEM',['cimento'],'OEM',51.22,6.79,'Dik değirmen. Tabla ve rulo.'],
-  ['Gebr. Pfeiffer','Kaiserslautern, Almanya','Avrupa OEM',['cimento'],'OEM',49.44,7.76,''],
-  ['Metso','Tampere, Finlandiya','Avrupa OEM',['maden'],'OEM',61.5,23.76,'Kırıcı ve değirmen.'],
-  ['Sandvik','Stockholm, İsveç','Avrupa OEM',['maden'],'OEM',59.33,18.07,''],
-  ['Weir Minerals','Glasgow, İngiltere','Avrupa OEM',['maden'],'OEM',55.86,-4.25,''],
-  ['ArcelorMittal Dunkerque','Dunkerque / Grande-Synthe, Nord, Fransa','Fransa',['celik'],'Tesis',51.015,2.3,'Yüksek potansiyel - Fransa\'nın en büyük entegre BF-BOF tesisi olarak sürekli ve yüksek hacimli cüruf üretimi var, bu da düzenli/tekrarlayan cüruf potası yenileme ihtiyacı anlamına gelir.'],
-  ['ArcelorMittal Méditerranée (Fos-sur-Mer)','Fos-sur-Mer, Bouches-du-Rhône, Fransa','Fransa',['celik'],'Tesis',43.438,4.945,'Yüksek potansiyel - entegre BF-BOF tesisi olarak sürekli cüruf üretimi var; ikinci yüksek fırının yeniden devreye girmesiyle kapasite/cüruf hacmi artıyor.'],
-  ['Marcegaglia France (Fos-sur-Mer, "Projet Mistral")','Fos-sur-Mer, Bouches-du-Rhône, Fransa','Fransa',['celik'],'Tesis',43.438,4.945,'Yüksek potansiyel (orta-uzun vadeli) - sıfırdan kurulan yeni bir EAF tesisi olduğu için tüm ekipman (cüruf potaları dahil) baştan tedarik edilecek; ancak proje henüz kesinleşmiş yatırım kararı aşamasında değil, bu nedenle kısa vadede değil erken ilişki kurma fırsatı olarak değerlendirilmeli.'],
-  ['Aubert & Duval - Aciérie des Ancizes','Les Ancizes-Comps, Puy-de-Dôme, Fransa','Fransa',['celik'],'Tesis',48.853,2.349,'Orta potansiyel - yüksek katma değerli ama nispeten küçük hacimli özel çelik/süper alaşım üretimi yapan EAF tesisi. (harita konumu yaklaşık - küçük yerleşim için il/eyalet merkezine sabitlendi)']
-].map((r,i)=>({id:'M'+i, ad:r[0], konum:r[1], bolge:r[2], sektor:r[3], tip:r[4],
-                lat:r[5], lng:r[6], not:r[7], dur:0, ilt:''}));
+/*__MUS_BLOCK__*/
 
 /* Doğrulanmış kamuya açık kurumsal iletişim bilgileri (firmaların resmi künye/iletişim sayfaları) */
-const ILETISIM = {
-  'Danieli':'+39 0432 1958111 · danieli.com — Via Nazionale 41, 33042 Buttrio (UD)',
-  'SMS group':'+49 2161 350-0 · communications@sms-group.com · sms-group.com — Am SMS Campus 1, 41069 Mönchengladbach',
-  'FLSmidth':'+45 3618 1000 · info@flsmidth.com · fls.com — Vigerslev Allé 77, 2500 Valby, Kopenhag',
-  'ArcelorMittal Dunkerque':'+33 (0)1 71 92 00 00 · france.arcelormittal.com',
-  'ArcelorMittal Méditerranée (Fos-sur-Mer)':'COMMUNICATION.FOS@ARCELORMITTAL.COM · france.arcelormittal.com',
-  'Marcegaglia France (Fos-sur-Mer, "Projet Mistral")':'04 42 47 93 00 · fos-sur-mer.marcegaglia.com',
-  'Aubert & Duval - Aciérie des Ancizes':'04 73 67 30 00 · www.aubertduval.com'
-};
-MUS.forEach(m => { if(ILETISIM[m.ad]) m.ilt = ILETISIM[m.ad]; });
+/*__ILETISIM_BLOCK__*/
 
 /* ---------- ortak ---------- */
 const $ = s => document.querySelector(s);

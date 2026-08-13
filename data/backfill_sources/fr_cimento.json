@@ -1,0 +1,191 @@
+[
+  {
+    "firma_adi": "Heidelberg Materials France Ciments (Ciments Calcia) - Cimenterie d'Airvault",
+    "sehir": "Airvault (79600), Deux-Sèvres",
+    "web_sitesi": "https://www.ciments.heidelbergmaterials.fr",
+    "telefon": "05 49 70 81 81",
+    "eposta": "airvault@heidelbergmaterials.com",
+    "profil": "Klinker fabrikası (fırınlı), yaklaşık 100 yıldır faaliyette, 138 çalışan. Yıllık kapasite ve fırın sayısı doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif klinker/fırın tesisi, modernizasyon yatırımları sürüyor, düzenli aşınan parça ihtiyacı olası."
+  },
+  {
+    "firma_adi": "Heidelberg Materials France Ciments (Ciments Calcia) - Cimenterie de Beaucaire",
+    "sehir": "Beaucaire (30300), Gard",
+    "web_sitesi": "https://www.ciments.heidelbergmaterials.fr",
+    "telefon": "04 66 59 81 30",
+    "eposta": "david.metayer@heidelbergmaterials.com",
+    "profil": "Klinker fabrikası, 1925'ten beri faaliyette, 112 çalışan. Kapasite ve fırın sayısı doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı tesis, dönüşüm/yatırım programına dahil."
+  },
+  {
+    "firma_adi": "Heidelberg Materials France Ciments (Ciments Calcia) - Cimenterie de Beffes",
+    "sehir": "Beffes (18320), Cher",
+    "web_sitesi": "https://www.ciments.heidelbergmaterials.fr",
+    "telefon": "02 48 77 51 51",
+    "eposta": "jacques.andres@heidelbergmaterials.com",
+    "profil": "Klinker fabrikası, yıllık ~430.000 ton çimento üretimi, 94 çalışan, 1870'ten beri (kireç, sonra çimento) faaliyette.",
+    "degerlendirme": "Orta-Yüksek potansiyel - aktif fırınlı tesis fakat görece küçük kapasiteli."
+  },
+  {
+    "firma_adi": "Heidelberg Materials France Ciments (Ciments Calcia) - Cimenterie de Bussac",
+    "sehir": "Bussac-Forêt (17), Charente-Maritime",
+    "web_sitesi": "https://www.ciments.heidelbergmaterials.fr",
+    "telefon": "",
+    "eposta": "eric.fournel@heidelbergmaterials.com",
+    "profil": "Klinker fabrikası, 1978'de kuruldu, 1985'te modernize edildi, 104 çalışan. Kapasite ve fırın sayısı doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı tesis, dönüşüm/yatırım programına dahil."
+  },
+  {
+    "firma_adi": "Heidelberg Materials France Ciments (Ciments Calcia) - Cimenterie de Couvrot",
+    "sehir": "Couvrot (51300, BP7 51301 Vitry-le-François), Marne",
+    "web_sitesi": "https://www.ciments.heidelbergmaterials.fr",
+    "telefon": "03 26 73 63 00",
+    "eposta": "sergio.tosi@heidelbergmaterials.com",
+    "profil": "Klinker fabrikası, yıllık 1 milyon tondan fazla çimento üretimi, 141 çalışan, grubun Fransa'daki en önemli tesislerinden biri, 2020 yatırım planına dahil.",
+    "degerlendirme": "Yüksek potansiyel - büyük kapasiteli, aktif ve stratejik fırınlı tesis."
+  },
+  {
+    "firma_adi": "Heidelberg Materials France Ciments (Ciments Calcia) - Cimenterie de Ranville",
+    "sehir": "Ranville (14860), Calvados",
+    "web_sitesi": "https://www.ciments.heidelbergmaterials.fr",
+    "telefon": "01 34 97 18 00",
+    "eposta": "jacques.barret@heidelbergmaterials.com",
+    "profil": "1964'te kurulmuş fabrika (1933 açılan Colombelles fabrikasının yerine), 91 çalışan. Fırın sayısı/kapasitesi doğrulanamadı; sayfada 'centre de broyage' ifadesi yok, klinker tesisi olduğu değerlendiriliyor.",
+    "degerlendirme": "Orta-Yüksek potansiyel - aktif tesis görünüyor ancak fırın varlığı kesin doğrulanamadı."
+  },
+  {
+    "firma_adi": "Vicat - Cimenterie de Xeuilley",
+    "sehir": "Xeuilley (54990), Meurthe-et-Moselle",
+    "web_sitesi": "https://www.solutions-vicat.fr/cimenterie-de-xeuilley",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası (fırınlı), dekarbonizasyon/teknoloji yatırım projesi devam ediyor. Kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı tesis, büyük yatırım programına dahil (fosil yakıttan çıkış projesi)."
+  },
+  {
+    "firma_adi": "Vicat - Cimenterie de Créchy",
+    "sehir": "Créchy (03150), Allier",
+    "web_sitesi": "https://www.vicat.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası (fırınlı), 4,5 milyon € tutarında gazlaştırıcı (gazéifieur) yatırımı yapıldı. Kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı tesis, sürekli yatırım alıyor."
+  },
+  {
+    "firma_adi": "Vicat - Cimenterie de Montalieu-Vercieu",
+    "sehir": "Montalieu-Vercieu (38390), Isère",
+    "web_sitesi": "https://www.vicat.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Fransa'nın en büyük çimento fabrikası olarak tanımlanıyor; yıllık 1,3 milyon ton çimento (Fransa üretiminin ~%7'si), 1922'den beri kesintisiz çalışan tek rotary kiln (1450°C), kömür/biyokütle/atık yakıt kullanıyor. 1 milyar €'yu aşan CO2 yakalama-depolama (VAIA) projesi planlanıyor.",
+    "degerlendirme": "Çok Yüksek potansiyel - Fransa'nın tek fırınla en büyük klinker kapasitesine sahip tesislerinden biri; büyük fırın desteği/taç dişlisi/bandaj gibi ağır döküm parça ihtiyacı olası."
+  },
+  {
+    "firma_adi": "Vicat - Cimenterie de Saint-Égrève",
+    "sehir": "Saint-Égrève (38120), Isère",
+    "web_sitesi": "https://www.vicat.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası (fırınlı), eski Genevrey (Vif) fabrikasının yerini almış bir tesis. Kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı üretim tesisi."
+  },
+  {
+    "firma_adi": "Vicat - Cimenterie de La Grave de Peille",
+    "sehir": "Blausasc (06440), Alpes-Maritimes",
+    "web_sitesi": "https://www.vicat.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası (fırınlı), ÇED/ICPE izinlerine tabi aktif tesis. Kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı üretim tesisi."
+  },
+  {
+    "firma_adi": "EQIOM (CRH) - Cimenterie de Lumbres",
+    "sehir": "Lumbres (62380), Pas-de-Calais",
+    "web_sitesi": "https://www.eqiom.com",
+    "telefon": "+33 3 21 38 11 11",
+    "eposta": "",
+    "profil": "Klinker fabrikası, 2 fırın, kendi tebeşir/marn/kil ocağına sahip. 'K6' adlı yeni fırın inşası ile dekarbonizasyon projesi sürüyor (400 işçi, 9.000 ton çelik kullanımı).",
+    "degerlendirme": "Çok Yüksek potansiyel - 2 fırınlı büyük tesis, aktif büyük ölçekli fırın yenileme/inşa projesi (yeni ağır döküm/dövme parça ihtiyacı doğurabilir)."
+  },
+  {
+    "firma_adi": "EQIOM (CRH) - Cimenterie de Héming",
+    "sehir": "Héming (57830), Moselle",
+    "web_sitesi": "https://www.eqiom.com",
+    "telefon": "+33 3 87 23 37 00",
+    "eposta": "",
+    "profil": "Klinker fabrikası, kendi taş ocağına sahip, CO2 emisyon azaltma projeleri sürüyor. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı üretim tesisi."
+  },
+  {
+    "firma_adi": "EQIOM (CRH) - Cimenterie de Rochefort-sur-Nenon",
+    "sehir": "Rochefort-sur-Nenon (39700), Jura",
+    "web_sitesi": "https://www.eqiom.com",
+    "telefon": "+33 3 84 70 75 00",
+    "eposta": "",
+    "profil": "Klinker fabrikası, 50 yılı aşkın süredir faaliyette (2022'de 50. yıl kutlandı), atık geri kazanım/yakıt projeleri sürüyor. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif ve köklü fırınlı üretim tesisi."
+  },
+  {
+    "firma_adi": "Holcim France (eski Lafarge) - Cimenterie de Saint-Pierre-la-Cour",
+    "sehir": "Saint-Pierre-la-Cour (53410), Mayenne",
+    "web_sitesi": "https://www.lafarge.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "1958'den beri faaliyette; yıllık 1,6 milyon ton çimento kapasitesi; 1 fırın (kuru proses, preheater+precalciner, atık ısı geri kazanımı var). Basında Fransa'nın en büyük/önemli cimenteri olarak anılıyor. Capt4Climate CO2 yakalama projesine seçildi.",
+    "degerlendirme": "Çok Yüksek potansiyel - büyük kapasiteli, tek büyük fırınlı, aktif yatırım gören stratejik tesis."
+  },
+  {
+    "firma_adi": "Holcim France (eski Lafarge) - Cimenterie du Teil (Viviers-le-Teil)",
+    "sehir": "Le Teil (07400), Ardèche",
+    "web_sitesi": "https://www.lafarge.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "1833'ten beri faaliyette; yıllık 0,9 milyon ton çimento kapasitesi; 2 fırın (kuru proses, preheater), CCS teknolojisi uygulanıyor.",
+    "degerlendirme": "Yüksek potansiyel - 2 fırınlı, uzun süredir faaliyette olan tesis."
+  },
+  {
+    "firma_adi": "Holcim France (eski Lafarge) - Cimenterie de Port-la-Nouvelle",
+    "sehir": "Port-la-Nouvelle (11210), Aude",
+    "web_sitesi": "https://www.lafarge.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası, %75 alternatif yakıt (CSR) kullanımı, 120 milyon € dekarbonizasyon yatırımı. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif ve büyük yatırım gören fırınlı tesis."
+  },
+  {
+    "firma_adi": "Holcim France (eski Lafarge) - Cimenterie de Martres-Tolosane",
+    "sehir": "Martres-Tolosane (31220), Haute-Garonne",
+    "web_sitesi": "https://www.lafarge.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası, 120 milyon € tutarında yeni üretim hattı yatırımı, CarboClearTech CO2 yakalama projesi. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - büyük yatırım gören aktif fırınlı tesis."
+  },
+  {
+    "firma_adi": "Holcim France (eski Lafarge) - Cimenterie de La Malle",
+    "sehir": "Bouc-Bel-Air (13320), Bouches-du-Rhône",
+    "web_sitesi": "https://www.lafarge.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası, düşük karbonlu çimento üretimine yönelik yatırımlar yapılıyor. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı üretim tesisi."
+  },
+  {
+    "firma_adi": "Holcim France (eski Lafarge) - Cimenterie du Val d'Azergues",
+    "sehir": "Châtillon-d'Azergues / Lozanne (69), Rhône",
+    "web_sitesi": "https://www.lafarge.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası, demiryolu ile klinker/malzeme yükleme tesisi yatırımı yapıldı. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı üretim tesisi."
+  },
+  {
+    "firma_adi": "Holcim Haut-Rhin (Holcim France) - Cimenterie d'Altkirch",
+    "sehir": "Altkirch (68130), Haut-Rhin",
+    "web_sitesi": "https://www.holcim-haut-rhin.fr",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Klinker fabrikası, dekarbonizasyon projelerine dahil. Fırın sayısı/kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - aktif fırınlı üretim tesisi."
+  }
+]

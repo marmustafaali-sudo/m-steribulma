@@ -1,0 +1,122 @@
+[
+  {
+    "firma_adi": "HBIS GROUP Serbia Iron & Steel d.o.o. (Smederevo)",
+    "ulke": "Sırbistan",
+    "sehir": "Smederevo",
+    "web_sitesi": "https://hbisserbia.rs",
+    "telefon": "",
+    "eposta": "hbisbusinessoffice@hbisserbia.rs",
+    "profil": "Entegre çelik fabrikası (BF-BOF). 2 yüksek fırın + 3 konvertörlü (BOF) çelikhane, sürekli döküm, sıcak/soğuk haddehane. Yıllık kapasite ~2,2 milyon ton mamul yassı çelik. ~5.000 çalışan.",
+    "degerlendirme": "Yüksek potansiyel - iki yüksek fırın + üç konvertörlü büyük entegre BF-BOF tesisi, sürekli/yüksek hacimli cüruf üretimi, bölgedeki en büyük entegre tesislerden biri."
+  },
+  {
+    "firma_adi": "Nova Željezara Zenica d.o.o. (eski ArcelorMittal Zenica)",
+    "ulke": "Bosna-Hersek",
+    "sehir": "Zenica",
+    "web_sitesi": "https://nova-zeljezara.ba",
+    "telefon": "+387 32 467 208",
+    "eposta": "info@nova-zeljezara.ba",
+    "profil": "Entegre BF-BOF tesisi + kullanılmayan EAF. Toplam nominal kapasite ~1,94 milyon ton/yıl. Ekim 2025'te Pavgord Group'a (H&P) satıldı; Aralık 2025'ten beri iflas/yeniden yapılandırma sürecinde, ~2.000 çalışan.",
+    "degerlendirme": "Orta potansiyel - teknik olarak yüksek cüruf potası ihtiyacı ama ciddi finansal risk (iflas/yeniden yapılandırma süreci); ödeme koşulları netleşene kadar temkinli yaklaşılmalı."
+  },
+  {
+    "firma_adi": "SIJ Acroni d.o.o.",
+    "ulke": "Slovenya",
+    "sehir": "Jesenice",
+    "web_sitesi": "https://www.acroni.si",
+    "telefon": "+386 4 584 10 00",
+    "eposta": "info@acroni.si",
+    "profil": "EAF tesis (SIJ grubu), ~726.000 ton/yıl ham çelik kapasitesi (tek EAF, %100 hurda). Paslanmaz çelik kalın levha, özel çelikler üretiyor.",
+    "degerlendirme": "Orta-Yüksek potansiyel - yüksek kapasiteli tek EAF, düzenli cüruf potası ihtiyacı olması beklenir; SIJ grubunun en büyük üretim birimi."
+  },
+  {
+    "firma_adi": "Metalfer Steel Mill d.o.o. Sremska Mitrovica",
+    "ulke": "Sırbistan",
+    "sehir": "Sremska Mitrovica",
+    "web_sitesi": "https://metalfer.net/en/",
+    "telefon": "+381 22 621 636",
+    "eposta": "",
+    "profil": "EAF tabanlı, %100 hurda beslemeli. Yıllık nominal kapasite 500.000 ton. Kütük, inşaat demiri, profil üretiyor. ~629 çalışan.",
+    "degerlendirme": "Orta-Yüksek potansiyel - 500 bin ton/yıl kapasiteli önemli büyüklükte EAF, Sırbistan'da HBIS'ten sonra en büyük EAF üreticilerinden biri."
+  },
+  {
+    "firma_adi": "Makstil AD Skopje",
+    "ulke": "Kuzey Makedonya",
+    "sehir": "Üsküp (Gazi Baba)",
+    "web_sitesi": "https://www.makstil.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF (1 adet 110 ton ark ocağı), %100 hurda bazlı. Nominal kapasite 550.000 ton/yıl (2024 fiili: 305.000 ton). Slab üretiyor. 1967'den beri faaliyette, 973 çalışan.",
+    "degerlendirme": "Yüksek potansiyel - orta-büyük ölçekli, istikrarlı çalışan tek EAF tesisi, coğrafi olarak Kardökmak'a nispeten yakın."
+  },
+  {
+    "firma_adi": "Stomana Industry AD",
+    "ulke": "Bulgaristan",
+    "sehir": "Pernik",
+    "web_sitesi": "https://www.stomana.bg",
+    "telefon": "",
+    "eposta": "",
+    "profil": "EAF (2 ark ocağı: EAF1, EAF3), %100 hurda bazlı. Yıllık kapasite ~1.400.000 ton. Viohalco SA grubunun %100 iştiraki.",
+    "degerlendirme": "Yüksek potansiyel - bölgedeki en büyük EAF tesislerinden biri, iki ark ocağı ile yüksek hacimli sürekli cüruf üretimi."
+  },
+  {
+    "firma_adi": "Promet Steel JSC (Metinvest Group)",
+    "ulke": "Bulgaristan",
+    "sehir": "Debelt, Burgas",
+    "web_sitesi": "https://promet.metinvestholding.com",
+    "telefon": "+359 884 550 963",
+    "eposta": "office.pms@promet.bg",
+    "profil": "EAF, 1980'lerden beri faaliyette, 2010'dan bu yana Metinvest Group. Yıllık kapasite ~800.000 ton, inşaat/profil çeliği.",
+    "degerlendirme": "Orta-Yüksek potansiyel - orta ölçekli EAF, düzenli cüruf üretimi; satınalma kararları Metinvest merkezi üzerinden yürütülüyor olabilir."
+  },
+  {
+    "firma_adi": "Sidenor Steel Industry S.A.",
+    "ulke": "Yunanistan",
+    "sehir": "Selanik (Sindos)",
+    "web_sitesi": "https://sidenor.gr",
+    "telefon": "+30-210-6787111",
+    "eposta": "",
+    "profil": "EAF, yıllık kapasite 800.000 ton. Nervürlü inşaat çeliği, profil, filmaşin. Sidenor grubunun ana tesisi.",
+    "degerlendirme": "Yüksek potansiyel - büyük ölçekli EAF ve grup merkezi; grup genelinde merkezi satınalma ilişkisi kurulabilirse çoklu tesise satış fırsatı."
+  },
+  {
+    "firma_adi": "Sovel S.A.",
+    "ulke": "Yunanistan",
+    "sehir": "Almiros, Magnisia",
+    "web_sitesi": "https://sidenor.gr/en/start/production-facilities/sovel-s-almyros-magnissia/",
+    "telefon": "+30 24220 77111",
+    "eposta": "",
+    "profil": "EAF (1 ark ocağı), %100 hurda bazlı. Yıllık kapasite 1.350.000 ton. Viohalco'nun %28,6 iştiraki. 576 çalışan.",
+    "degerlendirme": "Yüksek potansiyel - tek ark ocaklı tesisler arasında en yüksek kapasitelilerden biri, yoğun üretim cüruf potası aşınmasını hızlandırır."
+  },
+  {
+    "firma_adi": "Hellenic Halyvourgia S.A. (Halyvourgiki)",
+    "ulke": "Yunanistan",
+    "sehir": "Velestino, Tesalya",
+    "web_sitesi": "https://www.hlv.gr",
+    "telefon": "+30 210 6283 400",
+    "eposta": "",
+    "profil": "EAF (1 ark ocağı), %100 hurda bazlı. Yıllık kapasite 700.000 ton. Filmaşin, nervürlü çubuk, blum.",
+    "degerlendirme": "Yüksek potansiyel - orta-büyük ölçekli EAF, Yunanistan'ın önde gelen bağımsız üreticilerinden."
+  },
+  {
+    "firma_adi": "Liberty Galați (GFG Alliance / Liberty Steel Group)",
+    "ulke": "Romanya",
+    "sehir": "Galați",
+    "web_sitesi": "",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre BF-BOF, duyurulan kapasite 4,1 milyon ton/yıl. Mart 2025'te ~1 milyar Euro borçla koruyucu yeniden yapılandırmaya girdi; Haziran 2026'daki ikinci açık artırma alıcı bulamadı, üretim büyük ölçüde durmuş.",
+    "degerlendirme": "Düşük potansiyel (kısa vadede) - teorik olarak çok yüksek hacimli cüruf üretimi ama mevcut mali/hukuki kriz nedeniyle güvenilir sipariş kaynağı değil; yeni yatırımcı bulunursa yeniden değerlendirilmeli."
+  },
+  {
+    "firma_adi": "AFV Donalam SRL (AFV Beltrame Group)",
+    "ulke": "Romanya",
+    "sehir": "Târgoviște",
+    "web_sitesi": "https://gruppobeltrame.com/en/donalam-srl/",
+    "telefon": "+40 245 202000",
+    "eposta": "",
+    "profil": "EAF (80 ton, mevcut), 2026'da ikinci/yeni ark ocağı devreye girmesi planlanıyor. Yıllık kapasite 300.000 ton. 2022'de İtalyan Beltrame Group tarafından satın alındı, ~300M Euro yeşil saha yatırımı planlanıyor.",
+    "degerlendirme": "Yüksek potansiyel - aktif büyüme/modernizasyon yatırımı yapan EAF tesisi, İtalyan grubun güvenilir satınalma süreçleri; yeni ark ocağı ile ihtiyaç artabilir."
+  }
+]

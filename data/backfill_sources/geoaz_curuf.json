@@ -1,0 +1,32 @@
+[
+  {
+    "firma_adi": "Rustavi Steel LLC (Rustavi Metallurgical Plant)",
+    "ulke": "Gürcistan",
+    "sehir": "Rustavi",
+    "web_sitesi": "https://www.rustavisteel.ge/en/",
+    "telefon": "+995 32 260 66 99",
+    "eposta": "",
+    "profil": "Kafkasya'nın en büyük entegre metalurji tesislerinden biri (1948 kuruluş, 2011'de yeniden faaliyete geçti). Hibrit yapı: yüksek fırın kökenli pik demir dökümü + 2019'da devreye alınan yeni EAF (kütük üretimi). Granüle cüruf, silikomangan, pik demir, inşaat demiri üretiyor. 1.300+ çalışan. Aktif.",
+    "degerlendirme": "Yüksek potansiyel - hem eski yüksek fırın/pik demir hattı hem yeni EAF hattı olan büyük entegre tesis; zaten granüle cüruf üretiyor olması düzenli pota yenileme ihtiyacını gösteriyor. Türkiye'ye ihracat bağlantısı var."
+  },
+  {
+    "firma_adi": "GeoSteel LLC",
+    "ulke": "Gürcistan",
+    "sehir": "Rustavi",
+    "web_sitesi": "https://www.geosteel.com.ge/en",
+    "telefon": "+995 322 24 37 95",
+    "eposta": "office@geosteel.com.ge",
+    "profil": "JSW Group (Hindistan) ortaklığında 2007 kuruluş, EAF bazlı mini mikro tesis. 35 ton EAF + 40 ton LRF. Yıllık ~175.000 ton inşaat demiri. Aktif.",
+    "degerlendirme": "Orta-Yüksek potansiyel - aktif tek EAF hattı, düzenli cüruf oluşumu; orta ölçekli mini-mill, daha küçük/orta segment pota ihtiyacı olabilir."
+  },
+  {
+    "firma_adi": "Baku Steel Company QSC",
+    "ulke": "Azerbaycan",
+    "sehir": "Bakü (Nərimanov)",
+    "web_sitesi": "https://www.bakusteel.com/en/",
+    "telefon": "(+994 12) 490-08-00",
+    "eposta": "info@bakusteel.com",
+    "profil": "Azerbaycan'ın en büyük EAF bazlı üreticisi (2001'den beri). 2 EAF: EAF-1 (60 ton, 534K ton/yıl) + EAF-2 (30 ton, 266K ton/yıl), toplam nominal ~800K ton/yıl. 2024 üretimi 352K ton. ~2.000 çalışan.",
+    "degerlendirme": "Yüksek potansiyel - bölgenin en büyük ve en aktif EAF operatörü, iki fırınla sürekli yüksek hacimli üretim; Kardökmak'ın hedef profiline en iyi uyan aday."
+  }
+]

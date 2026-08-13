@@ -1,0 +1,727 @@
+[
+  {
+    "ad": "Kardemir",
+    "konum": "Karabük",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 41.2,
+    "lng": 32.63,
+    "not": "Ana hissedar. Hadde standı ve pota işleri doğal akış.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Erdemir",
+    "konum": "Kdz. Ereğli",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 41.282,
+    "lng": 31.42,
+    "not": "Yassı hat, sürekli stand ve chock yenileme.",
+    "iletisim": ""
+  },
+  {
+    "ad": "İsdemir",
+    "konum": "İskenderun",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 36.66,
+    "lng": 36.16,
+    "not": "Yüksek fırın reline takvimi izlenmeli.",
+    "iletisim": ""
+  },
+  {
+    "ad": "İçdaş",
+    "konum": "Biga, Çanakkale",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 40.36,
+    "lng": 26.98,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Habaş",
+    "konum": "Aliağa, İzmir",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 38.79,
+    "lng": 26.94,
+    "not": "EAF, cüruf potası tüketimi yüksek.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Çolakoğlu Metalurji",
+    "konum": "Dilovası",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 40.78,
+    "lng": 29.53,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Tosyalı Holding",
+    "konum": "Osmaniye",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 37.07,
+    "lng": 36.2,
+    "not": "Cezayir yatırımı üzerinden ihracata köprü.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Oyak Çimento",
+    "konum": "Ankara",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 39.925,
+    "lng": 32.866,
+    "not": "Çok tesisli grup, tek temas noktası.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Limak Çimento",
+    "konum": "Ankara",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 39.9,
+    "lng": 32.85,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Çimsa",
+    "konum": "Mersin",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 36.8,
+    "lng": 34.64,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Eti Bakır",
+    "konum": "Ankara",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 39.93,
+    "lng": 32.85,
+    "not": "Kırıcı ve değirmen parçaları.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Eti Alüminyum",
+    "konum": "Seydişehir, Konya",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "maden",
+      "enerji"
+    ],
+    "tip": "Tesis",
+    "lat": 37.42,
+    "lng": 31.85,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Soma / Tunçbilek İşletmeleri",
+    "konum": "Manisa-Kütahya",
+    "bolge": "Yurt içi",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 39.18,
+    "lng": 27.61,
+    "not": "Dragline ve konveyör parçaları.",
+    "iletisim": ""
+  },
+  {
+    "ad": "HBIS Serbia",
+    "konum": "Smederevo, Sırbistan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 44.66,
+    "lng": 20.93,
+    "not": "Entegre tesis, yüksek fırın. Karayolu erişimi iyi.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Liberty Galati",
+    "konum": "Galati, Romanya",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 45.43,
+    "lng": 28.03,
+    "not": "Entegre, sürekli yedek parça ihtiyacı.",
+    "iletisim": ""
+  },
+  {
+    "ad": "ArcelorMittal Zenica",
+    "konum": "Zenica, Bosna",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 44.2,
+    "lng": 17.91,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Stomana Industry",
+    "konum": "Pernik, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 42.6,
+    "lng": 23.03,
+    "not": "EAF + haddehane.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Aurubis Bulgaria",
+    "konum": "Pirdop, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 42.7,
+    "lng": 24.15,
+    "not": "Bulgaristan şubesi üzerinden erişim kolay.",
+    "iletisim": ""
+  },
+  {
+    "ad": "KCM",
+    "konum": "Plovdiv, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 42.13,
+    "lng": 24.74,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Ellatzite-Med",
+    "konum": "Etropole, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 42.83,
+    "lng": 24,
+    "not": "Bakır madeni, kırıcı ve değirmen.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Asarel-Medet",
+    "konum": "Panagyurishte, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 42.5,
+    "lng": 24.18,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Devnya Cement",
+    "konum": "Devnya, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 43.23,
+    "lng": 27.56,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Zlatna Panega Cement",
+    "konum": "Lovech, Bulgaristan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 43.1,
+    "lng": 24.15,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Zijin Bor",
+    "konum": "Bor, Sırbistan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 44.07,
+    "lng": 22.1,
+    "not": "Bakır kompleksi, genişleme yatırımı.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Hellas Gold",
+    "konum": "Halkidiki, Yunanistan",
+    "bolge": "Balkanlar",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 40.5,
+    "lng": 23.7,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Ezz Steel",
+    "konum": "Kahire, Mısır",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 30.05,
+    "lng": 31.24,
+    "not": "Bölgenin en büyük hacmi.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Suez Steel",
+    "konum": "Süveyş, Mısır",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 29.97,
+    "lng": 32.55,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Suez Cement",
+    "konum": "Kahire, Mısır",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 30.03,
+    "lng": 31.23,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Arabian Cement",
+    "konum": "Kahire, Mısır",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 29.98,
+    "lng": 31.3,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "GICA",
+    "konum": "Cezayir",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 36.75,
+    "lng": 3.06,
+    "not": "Devlet çimento grubu, çok hatlı.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Tosyalı Algérie",
+    "konum": "Oran, Cezayir",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 35.7,
+    "lng": -0.63,
+    "not": "Türk sermayesi — giriş kolaylığı.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Bellara Steel (AQS)",
+    "konum": "Jijel, Cezayir",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 36.72,
+    "lng": 5.9,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "OCP Group",
+    "konum": "Khouribga, Fas",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 32.88,
+    "lng": -6.91,
+    "not": "Fosfat. Devasa öğütme/kırma parkı.",
+    "iletisim": ""
+  },
+  {
+    "ad": "LafargeHolcim Maroc",
+    "konum": "Casablanca, Fas",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 33.57,
+    "lng": -7.59,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "JPMC",
+    "konum": "Amman, Ürdün",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "Tesis",
+    "lat": 31.95,
+    "lng": 35.93,
+    "not": "Fosfat.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Karbala / Bazian Cement",
+    "konum": "Irak",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "Tesis",
+    "lat": 32.61,
+    "lng": 44.02,
+    "not": "Yeniden devreye alınan hatlar.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Hadeed (Sabic)",
+    "konum": "Cubail, S. Arabistan",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "Tesis",
+    "lat": 27,
+    "lng": 49.66,
+    "not": "Girişi zor, tek seferlik büyük iş.",
+    "iletisim": ""
+  },
+  {
+    "ad": "EGA",
+    "konum": "Dubai, BAE",
+    "bolge": "Ortadoğu / K. Afrika",
+    "sektor": [
+      "maden",
+      "enerji"
+    ],
+    "tip": "Tesis",
+    "lat": 24.9,
+    "lng": 55,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Danieli",
+    "konum": "Buttrio, İtalya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "hadde",
+      "celik"
+    ],
+    "tip": "OEM",
+    "lat": 46,
+    "lng": 13.34,
+    "not": "Haddehane tasarımcısı. Türkiye projeleri çok, denetime gelmesi kolay.",
+    "iletisim": "+39 0432 1958111 · danieli.com — Via Nazionale 41, 33042 Buttrio (UD)"
+  },
+  {
+    "ad": "SMS group",
+    "konum": "Düsseldorf, Almanya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "hadde",
+      "celik"
+    ],
+    "tip": "OEM",
+    "lat": 51.23,
+    "lng": 6.78,
+    "not": "Ağır döküm gövdeyi fason döktürür. En değerli hedef.",
+    "iletisim": "+49 2161 350-0 · communications@sms-group.com · sms-group.com — Am SMS Campus 1, 41069 Mönchengladbach"
+  },
+  {
+    "ad": "Primetals Technologies",
+    "konum": "Linz, Avusturya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "hadde",
+      "celik"
+    ],
+    "tip": "OEM",
+    "lat": 48.3,
+    "lng": 14.29,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Tenova",
+    "konum": "Castellanza, İtalya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "celik",
+      "hadde"
+    ],
+    "tip": "OEM",
+    "lat": 45.61,
+    "lng": 8.9,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "FLSmidth",
+    "konum": "Kopenhag, Danimarka",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "cimento",
+      "maden"
+    ],
+    "tip": "OEM",
+    "lat": 55.68,
+    "lng": 12.57,
+    "not": "Kendi ağır dökümhanesi yok.",
+    "iletisim": "+45 3618 1000 · info@flsmidth.com · fls.com — Vigerslev Allé 77, 2500 Valby, Kopenhag"
+  },
+  {
+    "ad": "thyssenkrupp Polysius",
+    "konum": "Beckum, Almanya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "cimento",
+      "maden"
+    ],
+    "tip": "OEM",
+    "lat": 51.76,
+    "lng": 8.04,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "KHD Humboldt Wedag",
+    "konum": "Köln, Almanya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "OEM",
+    "lat": 50.94,
+    "lng": 6.96,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Loesche",
+    "konum": "Düsseldorf, Almanya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "OEM",
+    "lat": 51.22,
+    "lng": 6.79,
+    "not": "Dik değirmen. Tabla ve rulo.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Gebr. Pfeiffer",
+    "konum": "Kaiserslautern, Almanya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "cimento"
+    ],
+    "tip": "OEM",
+    "lat": 49.44,
+    "lng": 7.76,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Metso",
+    "konum": "Tampere, Finlandiya",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "OEM",
+    "lat": 61.5,
+    "lng": 23.76,
+    "not": "Kırıcı ve değirmen.",
+    "iletisim": ""
+  },
+  {
+    "ad": "Sandvik",
+    "konum": "Stockholm, İsveç",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "OEM",
+    "lat": 59.33,
+    "lng": 18.07,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "Weir Minerals",
+    "konum": "Glasgow, İngiltere",
+    "bolge": "Avrupa OEM",
+    "sektor": [
+      "maden"
+    ],
+    "tip": "OEM",
+    "lat": 55.86,
+    "lng": -4.25,
+    "not": "",
+    "iletisim": ""
+  },
+  {
+    "ad": "ArcelorMittal Dunkerque",
+    "konum": "Dunkerque / Grande-Synthe, Nord, Fransa",
+    "bolge": "Fransa",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 51.015,
+    "lng": 2.3,
+    "not": "Yüksek potansiyel - Fransa'nın en büyük entegre BF-BOF tesisi olarak sürekli ve yüksek hacimli cüruf üretimi var, bu da düzenli/tekrarlayan cüruf potası yenileme ihtiyacı anlamına gelir.",
+    "iletisim": "+33 (0)1 71 92 00 00 · france.arcelormittal.com"
+  },
+  {
+    "ad": "ArcelorMittal Méditerranée (Fos-sur-Mer)",
+    "konum": "Fos-sur-Mer, Bouches-du-Rhône, Fransa",
+    "bolge": "Fransa",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 43.438,
+    "lng": 4.945,
+    "not": "Yüksek potansiyel - entegre BF-BOF tesisi olarak sürekli cüruf üretimi var; ikinci yüksek fırının yeniden devreye girmesiyle kapasite/cüruf hacmi artıyor.",
+    "iletisim": "COMMUNICATION.FOS@ARCELORMITTAL.COM · france.arcelormittal.com"
+  },
+  {
+    "ad": "Marcegaglia France (Fos-sur-Mer, \"Projet Mistral\")",
+    "konum": "Fos-sur-Mer, Bouches-du-Rhône, Fransa",
+    "bolge": "Fransa",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 43.438,
+    "lng": 4.945,
+    "not": "Yüksek potansiyel (orta-uzun vadeli) - sıfırdan kurulan yeni bir EAF tesisi olduğu için tüm ekipman (cüruf potaları dahil) baştan tedarik edilecek; ancak proje henüz kesinleşmiş yatırım kararı aşamasında değil, bu nedenle kısa vadede değil erken ilişki kurma fırsatı olarak değerlendirilmeli.",
+    "iletisim": "04 42 47 93 00 · fos-sur-mer.marcegaglia.com"
+  },
+  {
+    "ad": "Aubert & Duval - Aciérie des Ancizes",
+    "konum": "Les Ancizes-Comps, Puy-de-Dôme, Fransa",
+    "bolge": "Fransa",
+    "sektor": [
+      "celik"
+    ],
+    "tip": "Tesis",
+    "lat": 48.853,
+    "lng": 2.349,
+    "not": "Orta potansiyel - yüksek katma değerli ama nispeten küçük hacimli özel çelik/süper alaşım üretimi yapan EAF tesisi. (harita konumu yaklaşık - küçük yerleşim için il/eyalet merkezine sabitlendi)",
+    "iletisim": "04 73 67 30 00 · www.aubertduval.com"
+  }
+]

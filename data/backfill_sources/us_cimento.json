@@ -1,0 +1,382 @@
+[
+  {
+    "firma_adi": "Amrize (eski Holcim US) - Ste. Genevieve Flagship",
+    "eyalet": "Missouri",
+    "sehir": "Bloomsdale",
+    "web_sitesi": "https://stegen.amrize.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ABD'deki en büyük çimento fabrikalarından biri. Klinker kapasitesi ~4,83 milyon ton/yıl. 2023-2024'te 600.000 ton/yıl ek kapasite.",
+    "degerlendirme": "Yüksek potansiyel - bölgenin en büyük klinker üreticilerinden biri, sürekli aşınma parçası ihtiyacı."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim/Lafarge) - Alpena",
+    "eyalet": "Michigan",
+    "sehir": "Alpena",
+    "web_sitesi": "https://www.holcimalpenaconnect.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, dünyanın en büyük çimento fabrikalarından biri. ~2 fırın, klinker kapasitesi ~2,87 milyon ton/yıl. 1907'den beri faaliyette.",
+    "degerlendirme": "Yüksek potansiyel - çok büyük, eski tarihli tesis, yüksek yedek parça ihtiyacı."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim/Lafarge) - Ravena",
+    "eyalet": "New York",
+    "sehir": "Ravena",
+    "web_sitesi": "https://ravena.amrize.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, kuru proses. Klinker kapasitesi ~2,81 milyon ton/yıl.",
+    "degerlendirme": "Yüksek potansiyel - büyük kapasiteli, yüksek tonajlı üretim, düzenli yedek parça ihtiyacı."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim/Lafarge/Lehigh) - Whitehall/Cementon",
+    "eyalet": "Pennsylvania",
+    "sehir": "Whitehall / Lehigh County",
+    "web_sitesi": "https://www.amrize.com/us/en/our-businesses/building-materials/cement.html",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~3 fırın. Klinker kapasitesi ~1,05 milyon ton/yıl.",
+    "degerlendirme": "Orta-Yüksek potansiyel - orta ölçekli, çoklu fırın hattı olan eski tesis."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim/Lafarge) - Paulding",
+    "eyalet": "Ohio",
+    "sehir": "Paulding",
+    "web_sitesi": "https://www.amrize.com/us/en/our-businesses/building-materials/cement.html",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 2 fırın (ISLAK proses - eski teknoloji, 1956'dan beri).",
+    "degerlendirme": "Yüksek potansiyel - eski ıslak proses fırınlar daha sık parça değişimi gerektirir."
+  },
+  {
+    "firma_adi": "Heidelberg Materials US - Union Bridge",
+    "eyalet": "Maryland",
+    "sehir": "Union Bridge",
+    "web_sitesi": "https://www.heidelbergmaterials.us/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1 fırın, klinker kapasitesi ~2,00 milyon ton/yıl. 2022'de EcoCemPLC'ye geçiş.",
+    "degerlendirme": "Yüksek potansiyel - büyük tek fırınlı tesis."
+  },
+  {
+    "firma_adi": "Heidelberg Materials US (Lehigh Cement) - Mason City",
+    "eyalet": "Iowa",
+    "sehir": "Mason City",
+    "web_sitesi": "https://www.heidelbergmaterials.us/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1 fırın, klinker kapasitesi ~0,73 milyon ton/yıl. 1911'den beri faaliyette.",
+    "degerlendirme": "Orta-Yüksek potansiyel - küçük-orta ölçekli ama çok eski tek fırınlı tesis."
+  },
+  {
+    "firma_adi": "Buzzi Unicem USA - Greencastle",
+    "eyalet": "Indiana",
+    "sehir": "Greencastle",
+    "web_sitesi": "https://www.buzziunicemusa.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1906'dan beri faaliyette. Çimento kapasitesi 1,3 milyon ton/yıl.",
+    "degerlendirme": "Orta-Yüksek potansiyel - eski tarihli orta ölçekli entegre tesis."
+  },
+  {
+    "firma_adi": "Buzzi Unicem USA - Cape Girardeau",
+    "eyalet": "Missouri",
+    "sehir": "Cape Girardeau",
+    "web_sitesi": "https://www.buzziunicemusa.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1981'den beri faaliyette. Çimento kapasitesi 1,3 milyon ton/yıl.",
+    "degerlendirme": "Orta-Yüksek potansiyel - orta ölçekli, ~45 yıllık entegre tesis."
+  },
+  {
+    "firma_adi": "Titan America - Roanoke Cement Company",
+    "eyalet": "Virginia",
+    "sehir": "Troutville / Cloverdale",
+    "web_sitesi": "https://titanamerica.com/our-businesses/roanoke-cement-company-llc/",
+    "telefon": "800-375-9999 / 800-782-7622",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası. Kapasite doğrulanamadı. Düşük karbon (Type IL) çimentoya geçiş, Virginia Tech ile karbon yakalama projesi.",
+    "degerlendirme": "Yüksek potansiyel - Titan America'nın iki ABD fabrikasından biri, büyük dağıtım ağı."
+  },
+  {
+    "firma_adi": "Titan America - Keystone Cement Company",
+    "eyalet": "Pennsylvania",
+    "sehir": "Bath",
+    "web_sitesi": "https://titanamerica.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1 fırın, klinker kapasitesi ~0,9 milyon ton/yıl. 1937'den beri faaliyette. Mayıs 2026'da Titan America tarafından 310M$'a satın alındı.",
+    "degerlendirme": "Yüksek potansiyel - çok eski tek fırınlı tesis, yeni sahiplik büyüme/yatırım modunda."
+  },
+  {
+    "firma_adi": "Eagle Materials - Louisville (eski Kosmos Cement)",
+    "eyalet": "Kentucky",
+    "sehir": "Louisville (Kosmosdale)",
+    "web_sitesi": "https://www.kosmoscement.com/",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1 fırın, 1905'ten beri faaliyette. 2019-2020'de Eagle Materials'a geçti.",
+    "degerlendirme": "Yüksek potansiyel - 120 yıllık tek fırınlı çok eski tesis, güçlü aday."
+  },
+  {
+    "firma_adi": "Continental Cement Company (Summit Materials) - Hannibal",
+    "eyalet": "Missouri",
+    "sehir": "Hannibal",
+    "web_sitesi": "https://continentalcement.com/locations/hannibal-plant/",
+    "telefon": "(573) 221-1740",
+    "eposta": "info@continentalcement.com",
+    "profil": "Entegre klinker fabrikası, alternatif yakıt entegrasyonu var. Kapasite doğrulanamadı.",
+    "degerlendirme": "Orta-Yüksek potansiyel - aktif entegre tesis, kapasite verisi teyit edilemedi."
+  },
+  {
+    "firma_adi": "Continental Cement Company (Summit Materials) - Davenport",
+    "eyalet": "Iowa",
+    "sehir": "Buffalo (Davenport)",
+    "web_sitesi": "https://continentalcement.com/locations/davenport-plant/",
+    "telefon": "(563) 323-2751",
+    "eposta": "info@continentalcement.com",
+    "profil": "Entegre klinker fabrikası, ~2 fırın. Kıtadaki en büyük çimento depolama kubbesi (2023).",
+    "degerlendirme": "Yüksek potansiyel - çoklu fırın hattı, büyüme yatırımı yapıyor."
+  },
+  {
+    "firma_adi": "St Marys Cement (Votorantim) - Charlevoix",
+    "eyalet": "Michigan",
+    "sehir": "Charlevoix",
+    "web_sitesi": "https://www.stmaryscement.com/",
+    "telefon": "(231) 547-9971",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1 fırın, klinker kapasitesi ~1,90 milyon ton/yıl. 1967'den beri faaliyette. (Ohio'daki tesisler sadece dağıtım terminali.)",
+    "degerlendirme": "Yüksek potansiyel - büyük kapasiteli, tek fırınlı, 55+ yıllık entegre tesis."
+  },
+  {
+    "firma_adi": "CEMEX USA - Balcones Cement Plant",
+    "eyalet": "Texas",
+    "sehir": "New Braunfels",
+    "web_sitesi": "https://www.cemexusa.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, en az 1 fırın (preheater/precalciner). Kapasite doğrulanamadı.",
+    "degerlendirme": "Yüksek potansiyel - büyük entegre tesis, merkezi tedarik süreçleri giriş zorlaştırabilir."
+  },
+  {
+    "firma_adi": "GCC - GCC Permian / Odessa",
+    "eyalet": "Texas",
+    "sehir": "Odessa",
+    "web_sitesi": "https://www.gcc.com",
+    "telefon": "+1 303-739-5900",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~1,00 milyon ton/yıl klinker, 2 fırın. Üçüncü hat genişleme aşamasında.",
+    "degerlendirme": "Yüksek potansiyel - aktif genişleme yatırımı yapan büyük grup."
+  },
+  {
+    "firma_adi": "Ash Grove Cement (CRH) - Hunter (New Braunfels)",
+    "eyalet": "Texas",
+    "sehir": "New Braunfels",
+    "web_sitesi": "https://www.ashgrove.com",
+    "telefon": "(913) 451-8900",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~2 milyon ton/yıl çimento. Şubat 2024'te CRH/Ash Grove'a 2,1 milyar $'a satıldı.",
+    "degerlendirme": "Yüksek potansiyel - büyük gruba ait yüksek kapasiteli entegre tesis."
+  },
+  {
+    "firma_adi": "Ash Grove Cement (CRH) - Midlothian",
+    "eyalet": "Texas",
+    "sehir": "Midlothian",
+    "web_sitesi": "https://www.ashgrove.com",
+    "telefon": "(913) 451-8900",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~0,9M ton/yıl çimento, ~0,95M ton/yıl klinker. 1966'dan beri.",
+    "degerlendirme": "Orta-Yüksek potansiyel - daha küçük ama entegre klinker üretimi."
+  },
+  {
+    "firma_adi": "Quikrete Holdings - Midlothian (eski TXI/Martin Marietta)",
+    "eyalet": "Texas",
+    "sehir": "Midlothian",
+    "web_sitesi": "https://www.quikrete.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~1,89M ton/yıl çimento, ~2,67M ton/yıl klinker. 1960'tan beri, Şubat 2026'da Quikrete'e geçti.",
+    "degerlendirme": "Yüksek potansiyel - bölgenin en büyük klinker kapasitelilerinden, yeni sahiplik fırsat penceresi."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim US) - Midlothian",
+    "eyalet": "Texas",
+    "sehir": "Midlothian",
+    "web_sitesi": "https://www.amrize.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1986'dan beri. ~2,35M ton/yıl çimento. 2026'da ~900M$ genişletme yatırımı duyuruldu.",
+    "degerlendirme": "Yüksek potansiyel - büyük aktif genişleme yatırımı, iyi zamanlama."
+  },
+  {
+    "firma_adi": "Buzzi Unicem USA - Maryneal",
+    "eyalet": "Texas",
+    "sehir": "Maryneal",
+    "web_sitesi": "https://www.buzziunicemusa.com",
+    "telefon": "610-882-5000 / 325-288-4221",
+    "eposta": "contactus@buzziunicemusa.com",
+    "profil": "Entegre klinker fabrikası. 2021-2023 'MN32' kapasite artırım projesi tamamlandı.",
+    "degerlendirme": "Yüksek potansiyel - yakın dönemde büyük yatırım/genişleme yaptı."
+  },
+  {
+    "firma_adi": "CalPortland Company - Mojave",
+    "eyalet": "California",
+    "sehir": "Mojave",
+    "web_sitesi": "https://www.calportland.com",
+    "telefon": "(844) 823-6309",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~1,3M ton/yıl çimento, ~1,97M ton/yıl klinker. Taiheiyo Cement'in (Japonya) %100 iştiraki.",
+    "degerlendirme": "Yüksek potansiyel - Kaliforniya'nın en büyük entegre fabrikalarından biri."
+  },
+  {
+    "firma_adi": "Mitsubishi Cement Corporation - Cushenbury/Lucerne Valley",
+    "eyalet": "California",
+    "sehir": "Lucerne Valley",
+    "web_sitesi": "https://mitsubishicement.com",
+    "telefon": "(702) 932-3900",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1988'den beri. ~1,70M ton/yıl çimento. Mitsubishi Materials'ın %100 iştiraki.",
+    "degerlendirme": "Yüksek potansiyel - Mitsubishi'nin ABD'deki tek entegre tesisi, büyük ölçekli."
+  },
+  {
+    "firma_adi": "CEMEX USA - Victorville",
+    "eyalet": "California",
+    "sehir": "Victorville",
+    "web_sitesi": "https://www.cemexusa.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1916'dan beri. ~3,00M ton/yıl çimento. AZ/CA/NV pazarlarına hizmet.",
+    "degerlendirme": "Yüksek potansiyel - bölgenin en büyük kapasitelerinden biri."
+  },
+  {
+    "firma_adi": "National Cement Company of California - Lebec",
+    "eyalet": "California",
+    "sehir": "Lebec",
+    "web_sitesi": "https://www.nationalcement.com",
+    "telefon": "(205) 423-2600",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1966'dan beri. ~1,6M ton/yıl çimento. Vicat SA (Fransa) iştiraki. 'Lebec Net-Zero' karbon yakalama projesi.",
+    "degerlendirme": "Yüksek potansiyel - aktif net-zero yatırım projesi, ekipman ihtiyacı doğurabilir."
+  },
+  {
+    "firma_adi": "Salt River Materials Group (Phoenix Cement) - Clarkdale",
+    "eyalet": "Arizona",
+    "sehir": "Clarkdale",
+    "web_sitesi": "https://www.srmaterials.com",
+    "telefon": "(480) 850-5757",
+    "eposta": "info@srmaterials.com",
+    "profil": "Entegre klinker fabrikası, 1959'dan beri. Yakın dönemde yeni fırın/öğütme sistemleri kuruldu.",
+    "degerlendirme": "Yüksek potansiyel - yakın zamanda yeni fırın/öğütme yatırımı, güncel ilişki fırsatı."
+  },
+  {
+    "firma_adi": "UNACEM North America - Drake Cement (Paulden)",
+    "eyalet": "Arizona",
+    "sehir": "Paulden",
+    "web_sitesi": "https://unacem-na.com",
+    "telefon": "(480) 219-6670",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 2011'den beri. ~1,0M ton/yıl çimento, ~0,66M ton/yıl klinker. Perulu UNACEM iştiraki.",
+    "degerlendirme": "Orta-Yüksek potansiyel - nispeten yeni/modern, küçük-orta ölçekli, büyüme planları var."
+  },
+  {
+    "firma_adi": "National Cement Company of Alabama - Ragland",
+    "eyalet": "Alabama",
+    "sehir": "Ragland",
+    "web_sitesi": "https://www.nationalcement.com",
+    "telefon": "(205) 423-2600",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1908'den beri. ~2,20M ton/yıl çimento, 2 fırın. 2020-2022'de 300M$ yeni fırın hattı.",
+    "degerlendirme": "Yüksek potansiyel - büyük kapasiteli, yakın zamanda yeni fırın hattı yatırımı."
+  },
+  {
+    "firma_adi": "Argos USA (Summit Materials) - Roberta",
+    "eyalet": "Alabama",
+    "sehir": "Calera",
+    "web_sitesi": "https://argos-us.com",
+    "telefon": "(678) 368-4300",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, ~1,7M ton/yıl çimento, ~1,5M ton/yıl klinker. Argos'un amiral gemisi tesislerinden biri.",
+    "degerlendirme": "Yüksek potansiyel - Argos'un ABD'deki en büyük fabrikalarından biri."
+  },
+  {
+    "firma_adi": "Titan America - Pennsuco Cement Plant",
+    "eyalet": "Florida",
+    "sehir": "Medley (Pennsuco)",
+    "web_sitesi": "https://titanamerica.com",
+    "telefon": "757-858-6500 / 800-468-7622",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, Florida'nın en büyük çimento fabrikası. Titan Cement Group (Yunanistan) ABD iştiraki.",
+    "degerlendirme": "Yüksek potansiyel - Florida'nın en büyük entegre tesisi."
+  },
+  {
+    "firma_adi": "Argos USA (Summit Materials) - Newberry",
+    "eyalet": "Florida",
+    "sehir": "Newberry",
+    "web_sitesi": "https://argos-us.com",
+    "telefon": "(678) 368-4300",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası (preheater sistemi mevcut).",
+    "degerlendirme": "Yüksek potansiyel - Argos'un Florida'daki entegre tesisi, grup genelinde tekrarlayan alım potansiyeli."
+  },
+  {
+    "firma_adi": "Suwannee American Cement - Branford",
+    "eyalet": "Florida",
+    "sehir": "Branford",
+    "web_sitesi": "https://sacement.com",
+    "telefon": "386-935-0966",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, preheater/calciner sistemi.",
+    "degerlendirme": "Orta-Yüksek potansiyel - bağımsız/bölgesel, esnek tedarikçi ilişkisi imkânı."
+  },
+  {
+    "firma_adi": "Suwannee American Cement - Sumterville",
+    "eyalet": "Florida",
+    "sehir": "Sumterville",
+    "web_sitesi": "https://sacement.com",
+    "telefon": "386-935-0966",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, nominal ~1.186.250 ton/yıl klinker (EPA izin verisi).",
+    "degerlendirme": "Yüksek potansiyel - doğrulanmış orta-büyük ölçekli entegre tesis."
+  },
+  {
+    "firma_adi": "GCC - GCC Rio Grande / Pueblo",
+    "eyalet": "Colorado",
+    "sehir": "Pueblo",
+    "web_sitesi": "https://www.gcc.com",
+    "telefon": "+1 303-739-5900",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 2008'den beri (greenfield). ~1,10M ton/yıl çimento, ~1,18M ton/yıl klinker.",
+    "degerlendirme": "Yüksek potansiyel - görece modern büyük ölçekli tesis."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim US) - Florence/Portland",
+    "eyalet": "Colorado",
+    "sehir": "Florence",
+    "web_sitesi": "https://www.amrize.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, 1996'dan beri. ~1,80M ton/yıl çimento, ~2,17M ton/yıl klinker. Karbon yakalama pilot çalışmaları.",
+    "degerlendirme": "Yüksek potansiyel - bölgenin en yüksek klinker kapasitelilerinden, teknoloji yatırımları."
+  },
+  {
+    "firma_adi": "Amrize (eski Holcim US) - Devil's Slide",
+    "eyalet": "Utah",
+    "sehir": "Devil's Slide",
+    "web_sitesi": "https://www.amrize.com",
+    "telefon": "",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, EPA enerji verimliliği ödülü almış tesis.",
+    "degerlendirme": "Orta-Yüksek potansiyel - grup genelinde tekrarlayan tedarikçi ilişkisi potansiyeli."
+  },
+  {
+    "firma_adi": "Ash Grove Cement (CRH) - Leamington",
+    "eyalet": "Utah",
+    "sehir": "Leamington",
+    "web_sitesi": "https://www.ashgrove.com",
+    "telefon": "(913) 451-8900",
+    "eposta": "",
+    "profil": "Entegre klinker fabrikası, Utah ekonomisine önemli katkı sağlayan tesis.",
+    "degerlendirme": "Orta-Yüksek potansiyel - kapasite verisi teyit edilemedi."
+  }
+]

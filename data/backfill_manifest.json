@@ -1,0 +1,70 @@
+{
+  "tasks": [
+    {
+      "file": "fr_curuf_potasi.json",
+      "bolge": "Fransa",
+      "sektor": "celik",
+      "count": 5
+    },
+    {
+      "file": "fr_cimento.json",
+      "bolge": "Fransa",
+      "sektor": "cimento",
+      "count": 21
+    },
+    {
+      "file": "balkan_curuf.json",
+      "bolge": "Balkanlar",
+      "sektor": "celik",
+      "count": 12
+    },
+    {
+      "file": "balkan_cimento.json",
+      "bolge": "Balkanlar",
+      "sektor": "cimento",
+      "count": 26
+    },
+    {
+      "file": "us_curuf.json",
+      "bolge": "ABD",
+      "sektor": "celik",
+      "count": 21
+    },
+    {
+      "file": "us_cimento.json",
+      "bolge": "ABD",
+      "sektor": "cimento",
+      "count": 38
+    },
+    {
+      "file": "geoaz_curuf.json",
+      "bolge": "Kafkasya",
+      "sektor": "celik",
+      "count": 3
+    },
+    {
+      "file": "geoaz_cimento.json",
+      "bolge": "Kafkasya",
+      "sektor": "cimento",
+      "count": 4
+    },
+    {
+      "file": "cezayir_curuf.json",
+      "bolge": "Ortadoğu / K. Afrika",
+      "sektor": "celik",
+      "count": 3
+    },
+    {
+      "file": "cezayir_cimento.json",
+      "bolge": "Ortadoğu / K. Afrika",
+      "sektor": "cimento",
+      "count": 11
+    }
+  ],
+  "cursor": {
+    "task_i": 0,
+    "item_i": 4
+  },
+  "per_run": 4,
+  "note": "Sırayla işlenir: her günlük otomasyon çalışması cursor'dan başlayıp per_run kadar firma ekler, customers.json'a yazar, cursor'u ilerletir. Bir dosya biterse sıradaki task'a geçer."
+}

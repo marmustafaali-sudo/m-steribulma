@@ -1,0 +1,47 @@
+[
+  {
+    "firma_adi": "ArcelorMittal Dunkerque",
+    "sehir": "Dunkerque / Grande-Synthe, Nord, Fransa",
+    "web_sitesi": "https://france.arcelormittal.com",
+    "telefon": "+33 (0)1 71 92 00 00",
+    "eposta": "",
+    "profil": "Entegre BF-BOF (yüksek fırın + bazik oksijen fırını) tesisi, Fransa'nın en büyük entegre çelik kompleksi. 3 yüksek fırın mevcut: BF3 (~1,8 Mt/yıl) ve BF4 (~3,6 Mt/yıl) aktif, BF2 (~1,5 Mt/yıl) devre dışı/bakımda. Nominal ham çelik (BOF) kapasitesi ~6,75 milyon ton/yıl (2023 gerçekleşen üretim ~3,9 milyon ton). Ayrıca dekarbonizasyon kapsamında 1,3 milyar euro yatırımla yeni bir elektrik ark ocağı (EAF) inşaatı sürüyor.",
+    "degerlendirme": "Yüksek potansiyel - Fransa'nın en büyük entegre BF-BOF tesisi olarak sürekli ve yüksek hacimli cüruf üretimi var, bu da düzenli/tekrarlayan cüruf potası yenileme ihtiyacı anlamına gelir."
+  },
+  {
+    "firma_adi": "ArcelorMittal Méditerranée (Fos-sur-Mer)",
+    "sehir": "Fos-sur-Mer, Bouches-du-Rhône, Fransa",
+    "web_sitesi": "https://france.arcelormittal.com",
+    "telefon": "",
+    "eposta": "COMMUNICATION.FOS@ARCELORMITTAL.COM",
+    "profil": "Entegre BF-BOF tesisi, Fransa'nın Akdeniz kıyısındaki tek entegre çelik fabrikası, 2 yüksek fırın mevcut. İkinci yüksek fırın 2024-2025 döneminde yeniden devreye alındı; tam kapasitede yıllık ~3,5 milyon ton ham çelik üretimi hedefleniyor.",
+    "degerlendirme": "Yüksek potansiyel - entegre BF-BOF tesisi olarak sürekli cüruf üretimi var; ikinci yüksek fırının yeniden devreye girmesiyle kapasite/cüruf hacmi artıyor."
+  },
+  {
+    "firma_adi": "Marcegaglia France (Fos-sur-Mer, \"Projet Mistral\")",
+    "sehir": "Fos-sur-Mer, Bouches-du-Rhône, Fransa",
+    "web_sitesi": "https://fos-sur-mer.marcegaglia.com",
+    "telefon": "04 42 47 93 00",
+    "eposta": "",
+    "profil": "İtalyan Marcegaglia grubu, eski Ascométal Fos-sur-Mer aciérisini 2024'te devraldı. \"Mistral\" projesi kapsamında Danieli ile 450 milyon euroluk ekipman anlaşması imzalandı; yeni bir elektrik ark ocaklı (EAF) tesis inşa ediliyor - basına göre \"Fransa'da 50 yılı aşkın süredir kurulan ilk yeni çelik fabrikası\". Hedef kapasite: 2+ milyon ton/yıl sıvı çelik (EAF), 3 milyon ton/yıl'a kadar sıcak haddelenmiş ürün (paslanmaz + karbon çeliği). Nihai yatırım kararının 2026 sonuna kadar verilmesi bekleniyor; inşaat henüz başlamadı.",
+    "degerlendirme": "Yüksek potansiyel (orta-uzun vadeli) - sıfırdan kurulan yeni bir EAF tesisi olduğu için tüm ekipman (cüruf potaları dahil) baştan tedarik edilecek; ancak proje henüz kesinleşmiş yatırım kararı aşamasında değil, bu nedenle kısa vadede değil erken ilişki kurma fırsatı olarak değerlendirilmeli."
+  },
+  {
+    "firma_adi": "Aubert & Duval - Aciérie des Ancizes",
+    "sehir": "Les Ancizes-Comps, Puy-de-Dôme, Fransa",
+    "web_sitesi": "https://www.aubertduval.com",
+    "telefon": "04 73 67 30 00",
+    "eposta": "",
+    "profil": "Havacılık, savunma, enerji ve tıbbi sektörlere yönelik özel çelik ve süper alaşım üreticisi; site resmi olarak \"Aciérie des Ancizes\" (elektrik ark ocaklı çelik dökümhanesi) olarak kayıtlı. Safran ve Airbus ortak sahipliğinde (Fransız devleti de pay sahibi), grup genelinde 10 üretim tesisi, 4.400 çalışan, 962 milyon euro yıllık ciro.",
+    "degerlendirme": "Orta potansiyel - yüksek katma değerli ama nispeten küçük hacimli özel çelik/süper alaşım üretimi yapan EAF tesisi."
+  },
+  {
+    "firma_adi": "Saint-Gobain PAM - Fonderie de Blénod / Pont-à-Mousson",
+    "sehir": "Blénod-lès-Pont-à-Mousson / Pont-à-Mousson, Meurthe-et-Moselle, Fransa",
+    "web_sitesi": "https://www.pamline.com",
+    "telefon": "03 83 83 25 24",
+    "eposta": "",
+    "profil": "Dökme demir (fonte) boru üretimi için Lorraine bölgesinin son aktif yüksek fırınına sahip (2 saatte sürekli 80 ton sıvı metal akışı). Ayrıca elektrik ark ocağına 10 milyon euroluk yatırım yapıldığı bildirildi. Saha ~200+ çalışan istihdam ediyor; Saint-Gobain PAM grubu Fransa genelinde 1.200+ çalışana sahip.",
+    "degerlendirme": "Orta potansiyel - çelik değil dökme demir (fonte) üretimi yapıyor; yüksek fırın cürufu oluşuyor ancak kullanılan pota/kap spesifikasyonlarının Kardökmak'ın çelik cüruf potası ürün gamıyla ne ölçüde örtüştüğü doğrulanmalı."
+  }
+]
