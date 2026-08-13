@@ -248,7 +248,7 @@
         <span><i class="lg" style="background:#F2A007"></i>Merkez (sürüklenebilir)</span>
         <span><i class="lg" style="border:2px solid #4CAF7D;background:#4CAF7D40"></i>Satış fırsatı — dolu daire çelik, eşkenar çimento</span>
         <span><i class="lg" style="border:1.5px solid #7FE3C0;background:#7FE3C022"></i>CastForge rakibi (şehir kümesi, içindeki sayı firma adedi)</span>
-        <span><i class="lg" style="border:1.5px dashed #E6EDF3"></i>Aramayla bulunan tesis</span>
+        <span><i class="lg" style="border:1.5px dashed #7FE3C0"></i>Aramayla bulunan tesis — rengi potansiyelini gösterir</span>
         <span><i class="lg" style="border:1px dashed #5C7A94"></i>Kapsama halkaları</span>
       </div>
       <button id="legendtog">Göstergeyi gizle</button>
@@ -847,21 +847,92 @@ function bulSonuc(els, tip, yaricap){
     const id = 'B'+e.type+e.id;
     const ilt = [t['contact:phone']||t.phone, t['contact:email']||t.email,
                  t.website||t['contact:website']].filter(Boolean).join(' · ');
-    BULUNAN[id] = {id, ad, lat, lng, tip, ilt,
+    BULUNAN[id] = {id, ad, lat, lng, tip, ilt, deg: degerlendir(t),
       konum:[t['addr:city'],t['addr:country']].filter(Boolean).join(', '),
       operator:t.operator||'', urun:t.product||''};
     n++;
-    L.circleMarker([lat,lng],{bubblingMouseEvents:false,radius:6,color:'#E6EDF3',weight:1.6,dashArray:'2 2',
-        fillColor:'#E6EDF3',fillOpacity:.08})
-      .bindPopup(`<strong>${esc(ad)}</strong><br>
-        <em>${esc([BULUNAN[id].konum, t.operator, t.product].filter(Boolean).join(' · ')||'OpenStreetMap kaydı')}</em>
-        ${ilt?`<br><em>${esc(ilt)}</em>`:''}
-        <br><button class="pin" style="margin-top:7px" onclick="bulEkle('${id}')">Hedef listeye ekle</button>`)
-      .addTo(bulLayer);
   });
-  $('#buldurum').textContent = n
-    ? `${yaricap} km çapında ${n} tesis bulundu. Beyaz kesikli işaretler — balona tıklayıp listene ekleyebilirsin.`
+  bulTekrarCiz();
+  const say = s => Object.values(BULUNAN).filter(b=>b.deg.seviye===s).length;
+  $('#buldurum').innerHTML = n
+    ? `${yaricap} km çapında <b style="color:var(--ink)">${n}</b> tesis bulundu:<br>`+
+      `<span style="color:${DEG['cok-yuksek'].renk}">${say('cok-yuksek')} birincil hedef</span> · `+
+      `<span style="color:${DEG['yuksek'].renk}">${say('yuksek')} işe yarar</span> · `+
+      `<span style="color:${DEG['orta'].renk}">${say('orta')} ikincil</span> · `+
+      `${say('belirsiz')} belirsiz.<br>İşarete tıklayıp değerlendirmeyi gör.`
     : `${yaricap} km çapında kayıtlı tesis bulunamadı. Çapı büyüt veya başka bir tesis tipi seç.`;
+}
+
+/* Bulunan tesisi OSM etiketlerinden sınıflandır ve Kardökmak açısından değerlendir */
+function degerlendir(t){
+  const metin = [t.name, t.operator, t.product, t.industrial, t['man_made'],
+                 t.craft, t.landuse, t.description, t['product:type']]
+                .filter(Boolean).join(' ').toLowerCase();
+  const v = re => re.test(metin);
+
+  // 1) çimento
+  if(v(/cement|çimento|ciment|zement|cimento|klinker|clinker/))
+    return {sektor:'Çimento fabrikası', seviye:'yuksek',
+      urun:['Dişli çemberi (girth gear)','Fırın bandajı ve destek rulosu','Dik değirmen tabla/rulo','Klinker soğutucu parçaları'],
+      gerekce:'Döner fırın ve değirmen ekipmanı sürekli aşınır; bandaj, rulo ve dişli çemberi tekrarlayan ağır döküm işidir.'};
+
+  // 2) entegre / yüksek fırın
+  if(v(/blast furnace|yüksek fırın|integrated|hochofen|altoforno|coke|kok/))
+    return {sektor:'Entegre demir-çelik tesisi', seviye:'cok-yuksek',
+      urun:['Cüruf potası ve kapağı','Yüksek fırın çanı ve ringi','Pota taşıyıcı ve mesnetler','Kok kırıcı gövde ve çeneleri'],
+      gerekce:'Yüksek fırınlı tesis en güçlü hedef: cüruf potası sürekli tüketilir, reline kampanyalarında çan/ring toplu yenilenir.'};
+
+  // 3) haddehane
+  if(v(/rolling mill|hadde|walzwerk|laminatoio|laminoir|rolling/))
+    return {sektor:'Haddehane', seviye:'cok-yuksek',
+      urun:['Hadde ayağı (mill housing)','Chock (merdane yatağı)','Sole plate ve mesnetler','Merdane, spindle, kaplin'],
+      gerekce:'Tam hedef kalem: hadde ayağı 40–150 t tek parça döküm + ağır işleme ister. Bir stand işi ardından paket iş getirir.'};
+
+  // 4) çelikhane / metalurji
+  if(v(/steel|çelik|celik|stahl|acciai|acier|foundry|döküm|dokum|giesserei|fonderie|metallurg|smelter|forge|dövme/))
+    return {sektor:'Çelikhane / dökümhane / metalurji', seviye:'yuksek',
+      urun:['Cüruf potası','Tandiş ve pota arabası şasisi','Tav fırını yürüyen kiriş','Merdane ve yataklar'],
+      gerekce:'Ergitme yapan tesis cüruf potası ve sıcak bölge ekipmanı tüketir. Dökümhane ise rakip olabilir — teyit et.'};
+
+  // 5) madencilik
+  if(v(/quarry|mine|mining|maden|ocak|mineshaft|aggregate|kırıcı|crusher/))
+    return {sektor:'Maden / taş ocağı', seviye:'yuksek',
+      urun:['Kırıcı gövde, manto ve konkav','Değirmen kapağı ve astarı','Kova, adaptör ve dişler','Konveyör tahrik tamburu'],
+      gerekce:'Aşınma parçası tüketimi yüksek ve tekrarlayan. Yüksek manganlı döküm talebi süreklidir.'};
+
+  // 6) alüminyum / demir dışı
+  if(v(/alumin|copper|bakır|zinc|çinko|nickel|nikel|lead|smelt/))
+    return {sektor:'Demir dışı metal tesisi', seviye:'orta',
+      urun:['Pota ve potalık ekipman','Anot/katot taşıyıcı','Aşınma parçaları'],
+      gerekce:'Sıcak metal ekipmanı ihtiyacı var ama tonaj bandı genelde daha düşük. Öncelik verme, fırsat çıkarsa değerlendir.'};
+
+  // 7) enerji
+  if(v(/power plant|power station|santral|kraftwerk|turbine|türbin|boiler|kazan/))
+    return {sektor:'Enerji santrali', seviye:'orta',
+      urun:['Değirmen flanşı','Türbin gövde dökümü','Kazan bağlantı dökümleri'],
+      gerekce:'Kömürlü santrallerde öğütme ekipmanı fırsatı var; yenilenebilirde talep sınırlı.'};
+
+  // 8) tanımsız sanayi
+  return {sektor: t.product ? ('Sanayi tesisi — ' + t.product) : 'Sanayi tesisi (tanımsız)',
+    seviye:'belirsiz', urun:[],
+    gerekce:'OpenStreetMap kaydında sektörü belirleyecek etiket yok. Adını aratıp ne ürettiğini teyit etmeden hedef sayma.'};
+}
+
+const DEG = {'cok-yuksek':{ad:'Çok yüksek — birincil hedef', renk:'#4CAF7D'},
+  'yuksek':{ad:'Yüksek — işe yarar', renk:'#7FE3C0'},
+  'orta':{ad:'Orta — ikincil', renk:'#F2A007'},
+  'belirsiz':{ad:'Belirsiz — teyit gerek', renk:'#8496A8'}};
+
+function bulBalon(b){
+  const d = b.deg;
+  return `<strong>${esc(b.ad)}</strong><br>
+    <em>${esc([b.konum,b.operator].filter(Boolean).join(' · ')||'OpenStreetMap kaydı')} · ${haversine(center,b).toFixed(0)} km</em><br>
+    <em style="color:${DEG[d.seviye].renk}">${esc(d.sektor)} · ${DEG[d.seviye].ad}</em>
+    <div style="margin:6px 0;font-size:12px;color:var(--muted)">${esc(d.gerekce)}</div>
+    ${d.urun.length?`<em>Satılabilir kalemler:</em><ul>${d.urun.map(u=>`<li>${esc(u)}</li>`).join('')}</ul>`:''}
+    ${b.ilt?`<em>${esc(b.ilt)}</em><br>`:''}
+    <button class="pin" style="margin-top:7px" onclick="bulEkle('${b.id}')">Hedef listeye ekle</button>
+    <button class="pin" style="margin-top:7px" onclick="window.open('https://www.google.com/search?q='+encodeURIComponent('${esc(b.ad).replace(/'/g,'')} ${esc(b.konum).replace(/'/g,'')}'),'_blank')">Ara</button>`;
 }
 
 function bulTekrarCiz(){
@@ -869,12 +940,10 @@ function bulTekrarCiz(){
   if(!els.length) return;
   bulLayer.clearLayers();
   els.forEach(b=>{
-    L.circleMarker([b.lat,b.lng],{bubblingMouseEvents:false,radius:6,color:'#E6EDF3',weight:1.6,
-        dashArray:'2 2',fillColor:'#E6EDF3',fillOpacity:.08})
-      .bindPopup(`<strong>${esc(b.ad)}</strong><br>
-        <em>${esc([b.konum,b.operator,b.urun].filter(Boolean).join(' · ')||'OpenStreetMap kaydı')}</em>
-        ${b.ilt?`<br><em>${esc(b.ilt)}</em>`:''}
-        <br><button class="pin" style="margin-top:7px" onclick="bulEkle('${b.id}')">Hedef listeye ekle</button>`)
+    const c = DEG[b.deg.seviye].renk;
+    L.circleMarker([b.lat,b.lng],{bubblingMouseEvents:false,radius:6.5,color:c,weight:1.8,
+        dashArray:'3 2',fillColor:c,fillOpacity:.18})
+      .bindPopup(bulBalon(b))
       .addTo(bulLayer);
   });
 }
@@ -882,10 +951,14 @@ function bulTekrarCiz(){
 window.bulEkle = id => {
   const b = BULUNAN[id]; if(!b) return;
   if(MUS.some(m=>m.ad===b.ad && Math.abs(m.lat-b.lat)<0.01)) return alert('Bu tesis listende zaten var.');
-  const sk = b.tip==='hepsi' ? 'celik' : (b.tip==='dokum' ? 'celik' : b.tip);
+  const s = b.deg.sektor.toLowerCase();
+  const sk = s.includes('çimento') ? 'cimento' : s.includes('maden') ? 'maden'
+           : s.includes('hadde') ? 'hadde' : s.includes('enerji') ? 'enerji' : 'celik';
+  const notlar = [b.deg.sektor, b.deg.gerekce,
+                  b.deg.urun.length ? ('Kalemler: '+b.deg.urun.join(', ')) : '',
+                  b.operator ? ('İşletmeci: '+b.operator) : ''].filter(Boolean).join(' · ');
   MUS.push({id:'M'+Date.now(), ad:b.ad, konum:b.konum||'—', bolge:'Otomatik bulunan',
-    sektor:[sk], tip:'Tesis', lat:b.lat, lng:b.lng, not:b.operator?('İşletmeci: '+b.operator):'',
-    dur:0, ilt:b.ilt});
+    sektor:[sk], tip:'Tesis', lat:b.lat, lng:b.lng, not:notlar, dur:0, ilt:b.ilt});
   if(![...$('#mbol').options].some(o=>o.value==='Otomatik bulunan')){
     const o=document.createElement('option'); o.value='Otomatik bulunan';
     o.textContent='Otomatik bulunan'; $('#mbol').append(o);
